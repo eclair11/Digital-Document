@@ -1,0 +1,56 @@
+<!-- Niveau 0 - action -->
+<!-- si l'action est de type ajout alors l'identifiant est inutile -->
+<!ELEMENT action(date, produit+)>
+<!ATTLIST action type (ajout | retrait) #REQUIRED>
+
+<!-- Niveau 1 - date -->
+<!ELEMENT date (jour, mois, année)>
+
+<!-- Niveau 1 - produit -->
+<!ELEMENT produit (identifiant, classe, marque, reference, id_ref, nb_prod, nombres)>
+<!ATTLIST produit classe (helicoptère | avion | navire)?>
+
+<!-- Niveau 2 - jour, mois, année -->
+<!ELEMENT jour (#PCDATA)>
+<!ELEMENT mois (#PCDATA)>
+<!ELEMENT année (#PCDATA)>
+
+<!-- Niveau 2 - identifiant, classe, marque, reference, id_ref, nb_prod? -->
+<!ELEMENT identifiant (#PCDATA|EMPTY)>
+<!ELEMENT classe (#PCDATA)>
+<!ELEMENT marque (#PCDATA)>
+<!ELEMENT reference (#PCDATA)>
+<!ELEMENT id_ref (#PCDATA)>
+<!ELEMENT nb_prod (#PCDATA)>
+
+<!-- Niveau 2 - nombres -->
+<!ELEMENT nombres (prix, equipage?, nbréacteur?, mesures, capacités)>
+
+<!-- Niveau 3 - prix, equipage, nbréacteur -->
+<!ELEMENT prix (#PCDATA)>
+<!ELEMENT equipage (#PCDATA)>
+<!ELEMENT nbréacteur (#PCDATA)>
+
+<!-- Niveau 3 - mesures, capacités -->
+<!ELEMENT mesures (dimensions, masses)>
+<!ELEMENT capacités (nbpassager, reservoir)>
+
+<!-- Niveau 4 - dimensions, masses, nbpassager, reservoir -->
+<!ELEMENT dimensions (longueur, envergure, hauteur)>
+<!ELEMENT masses (plein, charge_utile)>
+<!ELEMENT nbpassager (max, standard)>
+<!ELEMENT reservoir (carburant, consommation)>
+
+<!-- Niveau 5 - longueur, envergure, hauteur, plein, charge_utile, max, carburant -->
+<!ELEMENT longueur (#PCDATA)>
+<!ELEMENT envergure (#PCDATA)>
+<!ELEMENT hauteur (#PCDATA)>
+<!ELEMENT plein (#PCDATA)>
+<!ELEMENT charge_utile (#PCDATA)>
+<!ELEMENT max (#PCDATA)>
+<!ELEMENT carburant (#PCDATA)>
+
+<!-- Niveau 6 - consommation, litre_100km_passager, litre_100km -->
+<!ELEMENT consommation (litre_100km_passager, litre_100km)>
+<!ELEMENT litre_100km_passager (#PCDATA)>
+<!ELEMENT litre_100km (#PCDATA)>

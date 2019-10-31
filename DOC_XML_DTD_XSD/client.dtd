@@ -1,0 +1,15 @@
+<!ELEMENT action(client+)>
+<!ATTLIST action type (ajout) #REQUIRED>
+
+<!ELEMENT client (id, nom, prenom, genre, date_naissance, lieu_naissance, mail, telephone, fonction, entreprise)>
+
+<!ELEMENT id #PCDATA>
+<!ELEMENT nom #PCDATA>
+<!ELEMENT prenom #PCDATA>
+<!ELEMENT genre (#PCDATA | Masculin | Féminin)>
+<!ELEMENT date_naissance #PCDATA>
+<!ELEMENT lieu_naissance #PCDATA>
+<!ELEMENT mail #PCDATA>
+<!ELEMENT telephone #PCDATA>
+<!ELEMENT fonction #PCDATA>
+<!ELEMENT entreprise #PCDATA>

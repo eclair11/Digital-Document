@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- Elément racine -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+<!-- Warning - Fausse piste - à modifier car conditionnelles impossibles à implémenter -->
+
+	<!-- Type Date sous-type d'Action -->
+	<xsd:complexType name="Date">
+		<xsd:sequence>
+			<xsd:element name="jour" type="integer"/>
+			<xsd:element name="mois" type="integer"/>
+			<xsd:element name="annee" type="integer"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<!-- Type princiapl de l'Action -->
+	<xsd:complexType name="Action">
+		<xsd:sequence>
+			<xsd:element ref="Date"/>
+			<xsd:restriction base="xsd:string">
+				<xsd:enumeration value="ajoutProduit"/> <!-- restockage -->
+				<xsd:enumeration value="ajoutClient"/> <!-- conversion d'un propect en client-->
+				<xsd:enumeration value="suppressionProduit"/> <!-- perte et vol -->
+				<xsd:enumeration value="suppressionClient"/> <!-- eliminiation d'un client du repertoire -->
+				<xsd:enumeration value="venteClient"/> <!-- vente à un client -->
+				<xsd:enumeration value="venteEntreprise"/> <!-- vente à une entreprise -->
+			</xsd:restriction>
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>
