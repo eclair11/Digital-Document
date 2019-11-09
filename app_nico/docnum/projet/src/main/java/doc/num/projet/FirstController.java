@@ -29,6 +29,11 @@ public class FirstController {
     @Inject
     public AvionRepository avionRep;
 
+    @RequestMapping("/")
+    public String redirect() {
+        return "redirect:/home";
+    }
+
     @RequestMapping("/home")
     public String index(Model model) {
         UploadFiles upload = new UploadFiles();
