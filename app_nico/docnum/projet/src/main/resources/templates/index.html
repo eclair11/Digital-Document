@@ -12,54 +12,20 @@
 <body>
     <h1>Aigle Azur</h1>
 
-    <p>C'est pas bien mais c'est pas cher !</p>
-
-    <div>
-        <h1>Serialization</h1>
-
-        <p>
-            <b>Instructions</b><br>
-            Les informations sont contenues directement dans la base de données<br>
-            Elles sont inscrites au lancement de l'application avec les valeurs figurant dans le fichier ' data.sql ' situé
-            dans les resources.<br>
-            Cliquez sur l'un des 4 onglets et le fichier se télécharge (généralement dans 'téléchargement').<br>
-            Nb: Les fichiers sont formatés au format XML mais n'ont pas d'extension, il faut la rajouter manuellement (*.xml).  
-        </p>
-
-        <b>Générez un fichier de la BDD vers le XML</b><br>
-
-        <ul>
-            <li><a th:href="@{serializeXML}">Pour la flotte entière</a></li>
-            <li><a th:href="@{serializeXML/1}">Pour le 1er avion</a></li>
-            <li><a th:href="@{serializeXML/2}">Pour le 2ème avion</a></li>
-            <li><a th:href="@{serializeXML/3}">Pour le 3ème avion</a></li>
-            <li><a th:href="@{serializeXML/4}">Pour le 4ème avion</a></li>
-        </ul>
-
-    </div>
-
-
     <div>
         <h1>Desérialization</h1>
 
-        <p>
-            <b>Instructions</b><br>
-            Cliquer sur l'un des 3 onglets pour afficher le contenu du XML dans le terminal de l'IDE<br>
-            (Debug Console pour Visual Studio Code)<br>
-            Le fichier lu (flottille.xml) se situe dans le dossier ' src/resources/XML '
-        </p>
-
-        <b>Lire un fichier XML et l'afficher dans l'IDE</b><br>
+        <b>Lire un fichier XML, l'afficher dans l'IDE et répércute les modif dans la BD H2 (voir H2 console - url de la base de donnée : ./hihi)</b><br>
 
         <ul>
             <li><a th:href="@{deserializationDOM}">Méthode DOM pour la flotte</a></li>
         </ul>
-        <ul>
+        <!-- <ul>
             <li><a th:href="@{deserializationJackson}">Méthode Jackson pour la flotte</a></li>
         </ul>
         <ul>
             <li><a th:href="@{deserializationSAX}">Méthode SAX test extérieur</a></li>
-        </ul>
+        </ul> -->
 
 
 
