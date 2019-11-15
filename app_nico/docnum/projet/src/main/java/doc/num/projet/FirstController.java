@@ -68,7 +68,8 @@ public class FirstController {
 
     @RequestMapping(value = "/deserializationDOM")
     public String DeserializationDOM() {
-        ParserDomJava.ParserXMLDomJava();
+        System.out.println(avionRep);
+        ParserDomJava.parseXMLDomJava(avionRep);
         return "redirect:/home";
     }
 
