@@ -12,24 +12,17 @@ import lombok.Data;
  * Action
  */
 @Data
-@JsonPropertyOrder({ "intitule", "id", "name", "weight"}) /* à modifier probablement */
+@JsonPropertyOrder({ "id", "name", "weight"})
 public class Action {
 
     /* A écrire .................................................. */
 
     @JacksonXmlProperty
-    private int intitule; /* lui n'a normalement pas à être sauvegardé */
+    private String intitule; /* lui n'a normalement pas à être sauvegardé */
 
     @JacksonXmlProperty(localName = "avion")
     @JacksonXmlElementWrapper(useWrapping = false)
     private List<Avion> avion;
 
-    public Action() {
-    }
-
-    public Action(int intitule, List<Avion> avion) {
-        this.intitule = intitule;
-        this.avion = avion;
-    }
     
 }
