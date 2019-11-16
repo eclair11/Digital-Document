@@ -38,18 +38,20 @@ public class Avion implements Serializable {
     @JacksonXmlProperty
     private int weight;
 
+    private Moteur moteur;
+
     public Avion() {
     }
 
-    public Avion(Long id, String name, int weight) {
+    public Avion(Long id, String name, int weight, Moteur moteur) {
         this.id = id;
         this.name = name;
         this.weight = weight;
+        this.moteur = moteur;
     }
 
     public static long getSerialversionuid() {
         return serialVersionUID;
     }
 
-	
 }

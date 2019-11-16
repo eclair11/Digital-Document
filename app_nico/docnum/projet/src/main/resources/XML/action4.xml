@@ -1,0 +1,23 @@
+<?xml version = "1.0"?>
+
+<action intitule="delete">
+
+    <avion id = "54">
+        <name>Lockheed C-130 Hercules</name>
+        <weight>33</weight>
+        <moteur type="turbopropulseur">
+            <puissance>4300</puissance>
+            <nombre>4</nombre>
+        </moteur>
+    </avion>
+   
+    <avion id = "55">
+        <name>Lockheed SR-71 Blackbird</name>
+        <weight>26</weight>
+        <moteur type="turbostatoréacteur">
+            <puissance>144</puissance>
+            <nombre>2</nombre>
+        </moteur>
+    </avion>
+
+</action>

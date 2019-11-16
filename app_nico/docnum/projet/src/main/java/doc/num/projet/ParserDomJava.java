@@ -45,7 +45,7 @@ public class ParserDomJava {
                // Create the Avion object
                Avion avion = new Avion(Long.parseLong(eElement.getAttribute("id")), 
                        eElement.getElementsByTagName("name").item(0).getTextContent(), 
-                       Integer.parseInt(eElement.getElementsByTagName("weight").item(0).getTextContent()));
+                       Integer.parseInt(eElement.getElementsByTagName("weight").item(0).getTextContent()), null);
                // Save or update it in the DB
                System.out.println(avionRep);
                System.out.println(avion);
