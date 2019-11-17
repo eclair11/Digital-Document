@@ -20,6 +20,7 @@ import javax.inject.Inject;
 
 import lombok.var;
 
+
 /**
  * FirstController
  */
@@ -28,10 +29,11 @@ public class FirstController {
 
     @Inject
     public AvionRepository avionRep;
+    
 
     @RequestMapping("/")
     public String redirect() {
-        return "redirect:/home";
+       return "redirect:/home";
     }
 
     @RequestMapping("/home")

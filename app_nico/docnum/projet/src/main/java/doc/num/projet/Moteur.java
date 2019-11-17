@@ -18,11 +18,14 @@ import lombok.Data;
  */
 @Embeddable
 @Data
+@Entity
 @Table(name = "MOTEUR")
 @JacksonXmlRootElement(localName = "Moteur")
 public class Moteur {
 
-    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     /* rajouté !!! */
     @JacksonXmlProperty(isAttribute = true)
