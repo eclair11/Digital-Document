@@ -1,18 +1,29 @@
 <?xml version="1.0"?>
 
 <schema xmlns="http://www.w3.org/2001/XMLSchema">
-    <complexType name="action">
-        <complexType name="avion">
-            <sequence>
-                <element name="name" type="string" />
-                <element name="weight" type="integer" />
-                <complexType name="moteur">
-                    <sequence>
-                        <element name="puissance" type="integer" />
-                        <element name="nombre" type="integer" />
-                    </sequence>
-                </complexType>
+    <element name="action">
+        <complexType>
+            <sequence maxOccurs="unbounded">
+                <element name="avion">
+                    <complexType>
+                        <all>
+                            <element name="name" type="string"></element>
+                            <element name="weight" type="integer"></element>
+                            <element name="moteur">
+                                <complexType>
+                                    <all>
+                                        <element name="puissance" type="integer"></element>
+                                        <element name="nombre" type="integer"></element>
+                                    </all>
+                                    <attribute name="type" type="string"></attribute>
+                                </complexType>
+                            </element>
+                        </all>
+                        <attribute name="id" type="integer"></attribute>
+                    </complexType>
+                </element>
             </sequence>
+            <attribute name="intitule" type="string"></attribute>
         </complexType>
-    </complexType>
+    </element>
 </schema>
