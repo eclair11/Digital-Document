@@ -1,10 +1,6 @@
 package doc.num.projet;
 
 import javax.persistence.Embeddable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 

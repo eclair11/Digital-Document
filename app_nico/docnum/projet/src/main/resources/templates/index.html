@@ -20,9 +20,10 @@
         <ul>
             <li><a th:href="@{deserializationDOM}">Méthode DOM pour la flotte</a></li>
         </ul>
-        <!-- <ul>
+        <ul>
             <li><a th:href="@{deserializationJackson}">Méthode Jackson pour la flotte</a></li>
         </ul>
+        <!--
         <ul>
             <li><a th:href="@{deserializationSAX}">Méthode SAX test extérieur</a></li>
         </ul> -->
@@ -37,6 +38,13 @@
             <span>Choisir les fichiers à importer :</span>
             <input style="width: 320px" multiple accept=".xml" type="file" th:field="*{files}">
             <button type="submit">Valider</button>
+        </form>
+    </div>
+
+    <div>
+        <h1>Vérification d'un fichier XML</h1>
+        <form method="POST" th:action="@{/checkfile}">
+            <button type="submit">Vérifier</button>
         </form>
     </div>
 

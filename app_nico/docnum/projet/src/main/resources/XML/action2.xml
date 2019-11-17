@@ -1,7 +1,5 @@
 <?xml version = "1.0"?>
-<action>
-
-    <intitule>add</intitule>
+<action intitule="add">
 
     <avion id = "8">
         <name>AirbusA310</name>
