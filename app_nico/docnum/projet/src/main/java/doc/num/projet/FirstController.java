@@ -9,14 +9,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.xml.sax.SAXException;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.xml.XMLConstants;
+import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+import javax.xml.validation.Validator;
 
 import lombok.var;
 
@@ -44,6 +51,16 @@ public class FirstController {
     @RequestMapping(value = "/addfiles", method = RequestMethod.POST)
     public String addFiles(Model model, @ModelAttribute("upload") UploadFiles upload) {
         return this.multiFileUpload(model, upload);
+    }
+
+    @RequestMapping(value = "/checkfile", method = RequestMethod.POST)
+    public String checkFile(Model model) {
+        String xsdPath = "./src/main/resources/XSD/validator.xsd";
+        String xmlPath = "./src/main/resources/XML/action2.xml";
+        boolean response = this.validateXmlFile(xsdPath, xmlPath);
+        System.out.println(response);
+        model.addAttribute("response", response);
+        return "redirect:/home";
     }
 
     /* De BDD vers XML */
@@ -106,6 +123,19 @@ public class FirstController {
         model.addAttribute("linkedFiles", linkedFiles);
         model.addAttribute("failedFiles", failedFiles);
         return "redirect:/home";
+    }
+
+    private boolean validateXmlFile(String xsdPath, String xmlPath) {
+        try {
+            SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+            Schema schema = factory.newSchema(new File(xsdPath));
+            Validator validator = schema.newValidator();
+            validator.validate(new StreamSource(new File(xmlPath)));
+        } catch (IOException | SAXException e) {
+            System.out.println("Exception: " + e.getMessage());
+            return false;
+        }
+        return true;
     }
 
 }

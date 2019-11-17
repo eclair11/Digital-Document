@@ -1,0 +1,17 @@
+<?xml version = "1.0"?>
+<Flottille>
+   <avion id = "10">
+      <name>Boing777</name>
+      <weight>100</weight>
+   </avion>
+   
+   <avion id = "12">
+      <name>Zepplin</name>
+      <weight>2</weight>
+   </avion>
+   
+   <avion id = "15">
+      <name>Valkyrie</name>
+      <weight>4</weight>
+   </avion>
+</Flottille>
