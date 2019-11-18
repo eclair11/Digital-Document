@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="picnic.css" />
+    <title>Index de Document Numérique</title>
+    <style>
+        h2 {
+            color: cadetblue;
+        }
+        
+        .success {
+            color: #2ecc40;
+        }
+        
+        .failure {
+            color: #ff4136;
+        }
+        
+        li {
+            font-size: 0.8em;
+        }
+        
+        #container {
+             display: flex;
+             align-items: center;
+             justify-content: space-around;
+        }
+        
+        section {
+            background: #eee;
+            padding: 20px;
+        }
+        
+        #message {
+            flex:1;
+        }
+        #tables {
+            margin-left: 10px;
+            flex: 4;
+        }
+        
+        table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+       
+        
+    </style>
+</head>
+
+<body>
+    <h1>UI PROJET DOC NUM</h1>
+    <main id="container">
+        <section id="message">
+            <h2>Message du Vérificateur</h2>
+            <hr/>
+            <ol>
+                <li th:each="message : ${messages}" th:class="${message.type}">[[ ${message.content} ]]</li>
+            </ol>
+        </section>
+
+        <section id="tables">
+            <h2>Les Tables dans la base de donnée</h2>
+            <hr/>
+            <br/>
+            <strong>AVION</strong>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>NOMBRE</th>
+                    <th>WEIGHT</th>
+                    <th>MOTEUR_ID</th>
+                </tr>
+                <tr th:each="avion : ${avions}">
+                  <td>[[ ${avion.id} ]]</td>
+                  <td>[[ ${avion.name} ]]</td>
+                  <td>[[ ${avion.nombre} ]]</td>
+                  <td>[[ ${avion.weight} ]]</td>
+                  <td>[[ ${avion.moteur.id} ]]</td>
+                </tr>
+            </table>
+        </section>
+    </main>
+
+</body>
+
+<script>
+    /* Rafraichir la page régulièrement pour voir l'activité dans la DB */
+    window.setInterval(function() {
+        document.location.reload(true);
+    }, 500);
+
+</script>
+
+</html>
