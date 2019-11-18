@@ -32,10 +32,14 @@ public class IndexController {
     @Inject
     AvionRepository avionRepo;
 
+    @Inject
+    MoteurRepository moteurRepo;
+
     @RequestMapping("/")
     public String indexAction(Model model) {
         model.addAttribute("messages", messageRepo.findAll());
         model.addAttribute("avions", avionRepo.findAll());
+        model.addAttribute("moteurs", moteurRepo.findAll());
        return "index";
     }
 }

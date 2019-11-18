@@ -91,6 +91,26 @@ td, th {
                   <td>[[ ${avion.moteur.id} ]]</td>
                 </tr>
             </table>
+
+
+            <br/>
+            <br/>
+            <strong>MOTEUR</strong>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>NOMBRE</th>
+                    <th>PUISSANCE</th>
+                    <th>TYPE</th>
+                </tr>
+                <tr th:each="moteur : ${moteurs}">
+                  <td>[[ ${moteur.id} ]]</td>
+                  <td>[[ ${moteur.nombre} ]]</td>
+                  <td>[[ ${moteur.puissance} ]]</td>
+                  <td>[[ ${moteur.type} ]]</td>
+                </tr>
+            </table>
+
         </section>
     </main>
 
