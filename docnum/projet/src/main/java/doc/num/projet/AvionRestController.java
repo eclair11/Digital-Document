@@ -6,20 +6,18 @@
 
 package doc.num.projet;
 
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.RequestBody;
-import doc.num.projet.modele.*;
 import javax.inject.Inject;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
+import doc.num.projet.modele.Avion;
+import doc.num.projet.modele.AvionRepository;
+import doc.num.projet.modele.MoteurRepository;
 
 /**
  *
@@ -27,13 +25,13 @@ import javax.inject.Inject;
  */
 @RestController
 public class AvionRestController {
-    
-     @Inject
+
+    @Inject
     public AvionRepository avionRep;
-    
+
     @Inject
     public MoteurRepository moteurRep;
-    
+
     @RequestMapping(value = "/avion", method = RequestMethod.POST)
     public ResponseEntity<String> addAVion(@RequestBody Avion avion) {
         System.out.println(avion.getMoteur());

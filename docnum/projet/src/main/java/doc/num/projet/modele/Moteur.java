@@ -1,21 +1,17 @@
 package doc.num.projet.modele;
 
 import javax.persistence.Embeddable;
-
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
-
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
-import javax.persistence.Table;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 import lombok.Data;
 
-/**
- * moteur
- */
 @Embeddable
 @Data
 @Entity

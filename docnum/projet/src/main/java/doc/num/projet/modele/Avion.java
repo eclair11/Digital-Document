@@ -6,8 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
@@ -23,9 +21,6 @@ import lombok.Data;
 @JacksonXmlRootElement(localName = "Avion")
 public class Avion implements Serializable {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -38,15 +33,15 @@ public class Avion implements Serializable {
 
     @JacksonXmlProperty
     private int weight;
-    
+
     private int nombre;
-    
+
     @OneToOne
     private Moteur moteur;
 
     public Avion() {
     }
-    
+
     public Avion(Long id, String name, int weight, int nombre) {
         this.id = id;
         this.name = name;
@@ -58,7 +53,6 @@ public class Avion implements Serializable {
         this(id, name, weight, nombre);
         this.moteur = moteur;
     }
-    
 
     public static long getSerialversionuid() {
         return serialVersionUID;

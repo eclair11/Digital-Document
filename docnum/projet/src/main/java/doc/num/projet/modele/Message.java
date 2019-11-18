@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 import lombok.Data;
 
 /**
@@ -19,22 +20,22 @@ import lombok.Data;
 @Entity
 @Data
 public class Message {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     private String content;
-    
+
     /**
      * Type de message : erreur, succes
      */
     private String type;
-    
+
     public Message() {
-        
+
     }
-    
+
     public Message(String content, String type) {
         this.content = content;
         this.type = type;

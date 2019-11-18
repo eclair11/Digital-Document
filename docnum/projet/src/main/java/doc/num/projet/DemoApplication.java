@@ -11,12 +11,11 @@ import doc.num.projet.service.DirectoryWatcher;
 @SpringBootApplication
 public class DemoApplication {
 
-	public static void main(String[] args) {
-            
-            SpringApplication.run(DemoApplication.class, args);
-            ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
-            DirectoryWatcher watcher = (DirectoryWatcher) ctx.getBean("directoryWatcher");
-            watcher.start();
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(DemoApplication.class, args);
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        DirectoryWatcher watcher = (DirectoryWatcher) ctx.getBean("directoryWatcher");
+        watcher.start();
+    }
 
 }

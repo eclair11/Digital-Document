@@ -11,51 +11,51 @@
         h2 {
             color: cadetblue;
         }
-        
+
         .success {
             color: #2ecc40;
         }
-        
+
         .failure {
             color: #ff4136;
         }
-        
+
         li {
             font-size: 0.8em;
         }
-        
+
         #container {
-             display: flex;
-             align-items: center;
-             justify-content: space-around;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
         }
-        
+
         section {
             background: #eee;
             padding: 20px;
         }
-        
+
         #message {
-            flex:1;
+            flex: 1;
         }
+
         #tables {
             margin-left: 10px;
             flex: 4;
         }
-        
-        table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-       
-        
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
     </style>
 </head>
 
@@ -64,16 +64,15 @@ td, th {
     <main id="container">
         <section id="message">
             <h2>Message du Vérificateur</h2>
-            <hr/>
+            <hr />
             <ol>
                 <li th:each="message : ${messages}" th:class="${message.type}">[[ ${message.content} ]]</li>
             </ol>
         </section>
-
         <section id="tables">
-            <h2>Les Tables dans la base de donnée</h2>
-            <hr/>
-            <br/>
+            <h2>Les Tables dans la base de données</h2>
+            <hr />
+            <br />
             <strong>AVION</strong>
             <table>
                 <tr>
@@ -84,17 +83,15 @@ td, th {
                     <th>MOTEUR_ID</th>
                 </tr>
                 <tr th:each="avion : ${avions}">
-                  <td>[[ ${avion.id} ]]</td>
-                  <td>[[ ${avion.name} ]]</td>
-                  <td>[[ ${avion.nombre} ]]</td>
-                  <td>[[ ${avion.weight} ]]</td>
-                  <td>[[ ${avion.moteur.id} ]]</td>
+                    <td>[[ ${avion.id} ]]</td>
+                    <td>[[ ${avion.name} ]]</td>
+                    <td>[[ ${avion.nombre} ]]</td>
+                    <td>[[ ${avion.weight} ]]</td>
+                    <td>[[ ${avion.moteur.id} ]]</td>
                 </tr>
             </table>
-
-
-            <br/>
-            <br/>
+            <br />
+            <br />
             <strong>MOTEUR</strong>
             <table>
                 <tr>
@@ -104,21 +101,19 @@ td, th {
                     <th>TYPE</th>
                 </tr>
                 <tr th:each="moteur : ${moteurs}">
-                  <td>[[ ${moteur.id} ]]</td>
-                  <td>[[ ${moteur.nombre} ]]</td>
-                  <td>[[ ${moteur.puissance} ]]</td>
-                  <td>[[ ${moteur.type} ]]</td>
+                    <td>[[ ${moteur.id} ]]</td>
+                    <td>[[ ${moteur.nombre} ]]</td>
+                    <td>[[ ${moteur.puissance} ]]</td>
+                    <td>[[ ${moteur.type} ]]</td>
                 </tr>
             </table>
-
         </section>
     </main>
-
 </body>
 
 <script>
     /* Rafraichir la page régulièrement pour voir l'activité dans la DB */
-    window.setInterval(function() {
+    window.setInterval(function () {
         document.location.reload(true);
     }, 500);
 

@@ -6,15 +6,15 @@
 
 package doc.num.projet;
 
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 /**
  *
  * @author Solofo R.
  */
 @Configuration
-@ComponentScan(basePackages="doc.num.projet.service")
+@ComponentScan(basePackages = "doc.num.projet.service")
 public class AppConfig {
 
 }

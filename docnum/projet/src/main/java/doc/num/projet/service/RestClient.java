@@ -7,10 +7,10 @@
 package doc.num.projet.service;
 
 import org.springframework.stereotype.Service;
-
 import org.springframework.web.client.RestTemplate;
 
-import doc.num.projet.modele.*;
+import doc.num.projet.modele.Avion;
+import doc.num.projet.modele.Message;
 
 /**
  *
@@ -18,14 +18,14 @@ import doc.num.projet.modele.*;
  */
 @Service
 public class RestClient {
-    
+
     private RestTemplate restTemplate = new RestTemplate();
-    
+
     public void addNewAvion(Avion avion) {
-        this.restTemplate.postForObject( "http://localhost:8080/avion", avion, Avion.class);
+        this.restTemplate.postForObject("http://localhost:8080/avion", avion, Avion.class);
     }
-    
+
     public void addNewMessage(Message message) {
-        this.restTemplate.postForObject( "http://localhost:8080/message", message, Message.class);
+        this.restTemplate.postForObject("http://localhost:8080/message", message, Message.class);
     }
 }
