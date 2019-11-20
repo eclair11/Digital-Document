@@ -10,6 +10,8 @@ import javax.inject.Inject;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,6 +24,7 @@ import doc.num.projet.modele.MoteurRepository;
 /**
  *
  * @author Solofo R.
+ * @author Nicolas T.
  */
 @RestController
 public class AvionRestController {
@@ -32,7 +35,7 @@ public class AvionRestController {
     @Inject
     public MoteurRepository moteurRep;
 
-    @RequestMapping(value = "/avion", method = RequestMethod.POST)
+    @RequestMapping(value = "/avionAdd", method = RequestMethod.POST)
     public ResponseEntity<String> addAVion(@RequestBody Avion avion) {
         System.out.println(avion.getMoteur());
         moteurRep.save(avion.getMoteur());
@@ -41,6 +44,12 @@ public class AvionRestController {
         avionRep.save(avion);
         System.out.println("new avion saved !");
         return new ResponseEntity(HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/avionDel/{id}")
+    public void delAVion(@PathVariable("id") Long id) {
+        avionRep.deleteById(id);
+        System.out.println("avion deleted !");
     }
 
 }

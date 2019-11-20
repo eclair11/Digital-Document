@@ -12,6 +12,10 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 
 import lombok.Data;
 
+/**
+ * 
+ * @author Nicolas T.
+ */
 @Embeddable
 @Data
 @Entity

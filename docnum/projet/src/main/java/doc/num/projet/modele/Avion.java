@@ -2,6 +2,7 @@ package doc.num.projet.modele;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +15,8 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import lombok.Data;
 
 /**
- * Avions
+ * 
+ * @author Nicolas T.
  */
 @Entity
 @Data
@@ -36,7 +38,7 @@ public class Avion implements Serializable {
 
     private int nombre;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Moteur moteur;
 
     public Avion() {

@@ -9,7 +9,8 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import lombok.Data;
 
 /**
- * Action
+ * 
+ * @author Nicolas T.
  */
 @Data
 @JsonPropertyOrder({ "id", "name", "weight" })

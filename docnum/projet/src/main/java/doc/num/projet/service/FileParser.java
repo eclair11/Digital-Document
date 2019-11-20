@@ -73,9 +73,22 @@ public class FileParser {
                            Integer.parseInt(eElement.getElementsByTagName("nombre").item(0).getTextContent())));
 
                // ask the RestClient to add New avion in DB
-               restClient.addNewAvion(avion);
 
-            }
+               /* on stocke la chaîne 'intitulé' de la balise 'action' */
+               String intituleAction = doc.getDocumentElement().getAttribute("intitule");
+
+               Long idAvion = Long.parseLong(eElement.getAttribute("id"));
+
+               /* puis on la teste pour effectuer la bonne action */
+               if(intituleAction.matches("add")){
+                  restClient.addNewAvion(avion);
+               }
+               else if(intituleAction.matches("delete")){
+                  restClient.deleteNewAvion(avion, idAvion);
+               }
+               /* update à rajouter */
+
+             }
          }
 
       } catch (Exception e) {

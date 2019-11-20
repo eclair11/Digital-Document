@@ -40,7 +40,7 @@ public class DirectoryWatcher extends Thread {
 
     @Override
     public void run() {
-        System.out.println("Le scrutateur est lancer et attends des fichiers XML dans : projet/data/XML/");
+        System.out.println("Le scrutateur est lancé et attends des fichiers XML dans : projet/data/XML/");
         while (true) {
             try {
                 WatchService watchService = FileSystems.getDefault().newWatchService();
