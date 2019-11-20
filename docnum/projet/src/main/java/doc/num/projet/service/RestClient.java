@@ -34,7 +34,7 @@ public class RestClient {
     }
 
     public void updateNewAvion(Avion avion, Long id) {
-       /** à écrire */
+        this.restTemplate.put("http://localhost:8080/avionUpdate/" + id, avion, Avion.class);
     }
 
     public void deleteNewAvion(Avion avion, Long id) {

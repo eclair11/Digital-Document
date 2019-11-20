@@ -86,7 +86,9 @@ public class FileParser {
                else if(intituleAction.matches("delete")){
                   restClient.deleteNewAvion(avion, idAvion);
                }
-               /* update à rajouter */
+               else if(intituleAction.matches("update")){
+                  restClient.updateNewAvion(avion, idAvion);
+               }
 
              }
          }

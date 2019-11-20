@@ -37,13 +37,28 @@ public class AvionRestController {
 
     @RequestMapping(value = "/avionAdd", method = RequestMethod.POST)
     public ResponseEntity<String> addAVion(@RequestBody Avion avion) {
+        /** tout ce qui touche le moteur doit pouvoir être retiré
+         *  repercutions en cascade (voir classe modifiée)
+         */
+        /*
         System.out.println(avion.getMoteur());
         moteurRep.save(avion.getMoteur());
+        */
         System.out.println("new moteur saved !");
         System.out.println(avion);
         avionRep.save(avion);
         System.out.println("new avion saved !");
         return new ResponseEntity(HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value = "/avionUpdate/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateAVion(@PathVariable("id") Long id, @RequestBody Avion avion) {
+        avionRep.findById(id);
+       
+        System.out.println(avion);
+        avionRep.save(avion);
+        System.out.println("new avion updated !");
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @DeleteMapping("/avionDel/{id}")

@@ -1,7 +1,7 @@
 <?xml version = "1.0"?>
 <action intitule="update">
 
-    <avion id = "54">
+    <avion id = "4">
         <name>Lockheed C-130 Hercules</name>
         <weight>40</weight>
         <moteur type="turbopropulseur">
@@ -10,7 +10,7 @@
         </moteur>
     </avion>
 
-    <avion id = "55">
+    <avion id = "5">
         <name>Lockheed SR-71 Blackbird</name>
         <weight>30</weight>
         <moteur type="turbostatoréacteur">
