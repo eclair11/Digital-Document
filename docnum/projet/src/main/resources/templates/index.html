@@ -5,57 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" type="text/css" href="picnic.css" />
+    <link rel="stylesheet" type="text/css" href="css/picnic.css" />
     <title>Index de Document Numérique</title>
     <style>
-        h2 {
-            color: cadetblue;
-        }
-        
-        .success {
-            color: #2ecc40;
-        }
-        
-        .failure {
-            color: #ff4136;
-        }
-        
-        li {
-            font-size: 0.8em;
-        }
-        
-        #container {
-             display: flex;
-             align-items: center;
-             justify-content: space-around;
-        }
-        
-        section {
-            background: #eee;
-            padding: 20px;
-        }
-        
-        #message {
-            flex:1;
-        }
-        #tables {
-            margin-left: 10px;
-            flex: 4;
-        }
-        
-        table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-       
-        
+        /** le css se trouve à présent dans le fichier du chemin 
+         *  ' ressources/static/css/custom.css ' 
+         */
     </style>
 </head>
 
@@ -64,16 +19,15 @@ td, th {
     <main id="container">
         <section id="message">
             <h2>Message du Vérificateur</h2>
-            <hr/>
+            <hr />
             <ol>
                 <li th:each="message : ${messages}" th:class="${message.type}">[[ ${message.content} ]]</li>
             </ol>
         </section>
-
         <section id="tables">
-            <h2>Les Tables dans la base de donnée</h2>
-            <hr/>
-            <br/>
+            <h2>Les Tables dans la base de données</h2>
+            <hr />
+            <br />
             <strong>AVION</strong>
             <table>
                 <tr>
@@ -84,21 +38,37 @@ td, th {
                     <th>MOTEUR_ID</th>
                 </tr>
                 <tr th:each="avion : ${avions}">
-                  <td>[[ ${avion.id} ]]</td>
-                  <td>[[ ${avion.name} ]]</td>
-                  <td>[[ ${avion.nombre} ]]</td>
-                  <td>[[ ${avion.weight} ]]</td>
-                  <td>[[ ${avion.moteur.id} ]]</td>
+                    <td>[[ ${avion.id} ]]</td>
+                    <td>[[ ${avion.name} ]]</td>
+                    <td>[[ ${avion.nombre} ]]</td>
+                    <td>[[ ${avion.weight} ]]</td>
+                    <td>[[ ${avion.moteur.id} ]]</td>
+                </tr>
+            </table>
+            <br />
+            <br />
+            <strong>MOTEUR</strong>
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>NOMBRE</th>
+                    <th>PUISSANCE</th>
+                    <th>TYPE</th>
+                </tr>
+                <tr th:each="moteur : ${moteurs}">
+                    <td>[[ ${moteur.id} ]]</td>
+                    <td>[[ ${moteur.nombre} ]]</td>
+                    <td>[[ ${moteur.puissance} ]]</td>
+                    <td>[[ ${moteur.type} ]]</td>
                 </tr>
             </table>
         </section>
     </main>
-
 </body>
 
 <script>
     /* Rafraichir la page régulièrement pour voir l'activité dans la DB */
-    window.setInterval(function() {
+    window.setInterval(function () {
         document.location.reload(true);
     }, 500);
 

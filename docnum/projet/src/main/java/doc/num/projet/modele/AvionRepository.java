@@ -3,8 +3,9 @@ package doc.num.projet.modele;
 import org.springframework.data.repository.CrudRepository;
 
 /**
- * AvionRepository
+ * 
+ * @author Nicolas T.
  */
-public interface AvionRepository extends CrudRepository<Avion, Long>{
-    
+public interface AvionRepository extends CrudRepository<Avion, Long> {
+
 }

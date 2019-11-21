@@ -6,18 +6,17 @@
 
 package doc.num.projet;
 
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
+import javax.inject.Inject;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.RequestBody;
-import doc.num.projet.modele.*;
-import javax.inject.Inject;
+import org.springframework.web.bind.annotation.RestController;
+
+import doc.num.projet.modele.Message;
+import doc.num.projet.modele.MessageRepository;
 
 /**
  *
@@ -25,10 +24,10 @@ import javax.inject.Inject;
  */
 @RestController
 public class MessageRestController {
-    
+
     @Inject
     MessageRepository messageRepo;
-    
+
     @RequestMapping(value = "/message", method = RequestMethod.POST)
     public ResponseEntity<String> addMessage(@RequestBody Message message) {
         messageRepo.save(message);

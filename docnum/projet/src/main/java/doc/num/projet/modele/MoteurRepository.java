@@ -8,11 +8,10 @@ package doc.num.projet.modele;
 
 import org.springframework.data.repository.CrudRepository;
 
-
 /**
  *
  * @author Solofo R.
  */
-public interface MoteurRepository extends  CrudRepository<Moteur, Long>{
+public interface MoteurRepository extends CrudRepository<Moteur, Long> {
 
 }

@@ -7,25 +7,41 @@
 package doc.num.projet.service;
 
 import org.springframework.stereotype.Service;
-
 import org.springframework.web.client.RestTemplate;
 
-import doc.num.projet.modele.*;
+import doc.num.projet.modele.Avion;
+import doc.num.projet.modele.Message;
 
 /**
  *
  * @author Solofo R.
+ * @author Nicolas T.
  */
 @Service
 public class RestClient {
-    
+
+    /** méthodes à renommer
+     *
+     * ça veut rien dire de delete NewAvion,
+     * ou add NewAvion
+     * on fera ça plus tard! Trop de travail!!
+     */
+
     private RestTemplate restTemplate = new RestTemplate();
-    
+
     public void addNewAvion(Avion avion) {
-        this.restTemplate.postForObject( "http://localhost:8080/avion", avion, Avion.class);
+        this.restTemplate.postForObject("http://localhost:8080/avionAdd", avion, Avion.class);
     }
-    
+
+    public void updateNewAvion(Avion avion, Long id) {
+        this.restTemplate.put("http://localhost:8080/avionUpdate/" + id, avion, Avion.class);
+    }
+
+    public void deleteNewAvion(Avion avion, Long id) {
+        this.restTemplate.delete("http://localhost:8080/avionDel/" + id, id, avion);
+    }
+
     public void addNewMessage(Message message) {
-        this.restTemplate.postForObject( "http://localhost:8080/message", message, Message.class);
+        this.restTemplate.postForObject("http://localhost:8080/message", message, Message.class);
     }
 }

@@ -9,10 +9,11 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import lombok.Data;
 
 /**
- * Action
+ * 
+ * @author Nicolas T.
  */
 @Data
-@JsonPropertyOrder({ "id", "name", "weight"})
+@JsonPropertyOrder({ "id", "name", "weight" })
 public class Action {
 
     /* A écrire .................................................. */
@@ -24,5 +25,4 @@ public class Action {
     @JacksonXmlElementWrapper(useWrapping = false)
     private List<Avion> avion;
 
-    
 }
