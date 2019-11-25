@@ -65,7 +65,7 @@ public class DirectoryWatcher extends Thread {
                             // ask rest client to send success message
                             String contenus = "le fichier " + fileName + " a été accépté !";
                             restClient.addNewMessage(new Message(contenus, "success"));
-                        } else {
+                        } else { // ask rest client to send failure message
                             String contenus = "le fichier " + fileName + " a été rejeté !";
                             restClient.addNewMessage(new Message(contenus, "failure"));
                             lastFilename = "";
