@@ -23,7 +23,9 @@
                     </complexType>
                 </element>
             </sequence>
+            
             <attribute name="intitule" type="string"></attribute>
+            <attribute name="dateAction" type="dateTime"></attribute>
         </complexType>
     </element>
 </schema>

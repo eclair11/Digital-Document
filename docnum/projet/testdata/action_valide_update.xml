@@ -18,5 +18,32 @@
             <nombre>2</nombre>
         </moteur>
     </avion>
+
+    <avion id = "8">
+        <name>AirbusA310</name>
+        <weight>85</weight>
+        <moteur type="turboréacteur">
+            <puissance>350</puissance>
+            <nombre>4</nombre>
+        </moteur>
+    </avion>
+   
+    <avion id = "9">
+        <name>Soukhoï Su-27</name>
+        <weight>16</weight>
+        <moteur type="turboréacteur">
+            <puissance>122</puissance>
+            <nombre>2</nombre>
+        </moteur>
+    </avion>
+
+    <avion id = "23">
+        <name>nono</name>
+        <weight>999</weight>
+        <moteur type="magie">
+            <puissance>999</puissance>
+            <nombre>999</nombre>
+        </moteur>
+    </avion>
     
 </action>

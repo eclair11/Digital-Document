@@ -1,6 +1,7 @@
 package doc.num.projet.modele;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -8,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
@@ -40,6 +43,11 @@ public class Avion implements Serializable {
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Moteur moteur;
+
+    /*
+    @Temporal(TemporalType.DATE)
+    private Date dateCreation = new Date();
+    */
 
     public Avion() {
     }

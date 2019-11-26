@@ -81,7 +81,7 @@ public class FileParser {
 
                /* puis on la teste pour effectuer la bonne action */
                if(intituleAction.matches("add")){
-                  restClient.addNewAvion(avion);
+                  restClient.addNewAvion(avion, idAvion);
                }
                else if(intituleAction.matches("delete")){
                   restClient.deleteNewAvion(avion, idAvion);
