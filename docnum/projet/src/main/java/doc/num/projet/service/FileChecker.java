@@ -21,6 +21,10 @@ import org.xml.sax.SAXException;
 import javax.inject.Inject;
 import doc.num.projet.modele.Message;
 
+import java.nio.charset.Charset;
+import java.nio.file.Paths;
+import java.nio.file.Files;
+
 /**
  *
  * @author Elias R. et Solofo R.
@@ -58,10 +62,16 @@ public class FileChecker {
             restClient.addNewMessage(new Message(contenus, "failure"));
         }
         
+        if (!this.isContentAscii(xmlFileName)) {
+            String contenus = "le contenus du fichier " + xmlFileName + " contient un caractère non ASCII !";
+            restClient.addNewMessage(new Message(contenus, "failure"));
+        }
+        
         return 
                 this.validateXmlFile(xsdPath, xmlPath) && 
                 this.validateFileSize(xmlFileName) && 
-                this.validateFileExtension(xmlFileName);
+                this.validateFileExtension(xmlFileName) &&
+                this.isContentAscii(xmlFileName);
 
     }
 
@@ -105,6 +115,28 @@ public class FileChecker {
         String[] splitedFilename = filename.split("\\.");
         String extension = splitedFilename[splitedFilename.length - 1];
         return extension.equals("xml");
+    }
+    
+    /**
+     * Check that the content of the file is ASCII
+     * @author Solofo R.
+     */
+    private boolean isContentAscii(String filename) {
+        String content = this.readAllBytes("data/XML/" + filename);
+        return Charset.forName("US-ASCII").newEncoder().canEncode(content);
+    }
+    
+    /**
+     * code copied from https://howtodoinjava.com/java/io/java-read-file-to-string-examples/
+     */
+    private String readAllBytes(String filePath) {
+        String content = "";
+        try {
+            content = new String ( Files.readAllBytes( Paths.get(filePath) ) );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return content;
     }
 
 }
