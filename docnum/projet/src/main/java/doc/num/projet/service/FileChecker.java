@@ -126,6 +126,7 @@ public class FileChecker {
         return Charset.forName("US-ASCII").newEncoder().canEncode(content);
     }
     
+    
     /**
      * code copied from https://howtodoinjava.com/java/io/java-read-file-to-string-examples/
      */
@@ -138,5 +139,32 @@ public class FileChecker {
         }
         return content;
     }
+    
+    /**
+     * Check that an info doesn't contains only one char
+     * @author Solofo R.
+     */
+    public boolean infoContainsOneChar(String info) {
+        if (info.length() == 1) {
+            String contenus = "le fichier " + xmlFileName + " ne contient q'un seul caractère !";
+            restClient.addNewMessage(new Message(contenus, "failure"));
+            return false;
+        }
+        return true;
+    }
+    
+    /**
+     * Check that an info doesn't contains more than 1000 char
+     * @author Solofo R.
+     */
+    public boolean infoContainsMoreThan1kChar(String info) {
+        if(info.length() > 1000){
+            String contenus = "le fichier " + xmlFileName + " contient plus de 1000 caractères !";
+            restClient.addNewMessage(new Message(contenus, "failure"));
+            return false;
+        }
+        return true;
+    }
+    
 
 }
