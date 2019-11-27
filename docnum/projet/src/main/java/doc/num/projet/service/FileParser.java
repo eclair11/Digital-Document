@@ -30,6 +30,9 @@ public class FileParser {
 
    @Inject
    RestClient restClient;
+   
+   @Inject
+   FileChecker checker;
 
    public void parse(String fileName) {
       try {
@@ -62,7 +65,13 @@ public class FileParser {
                System.out.println(
                      "Moteur puissance: " + eElement.getElementsByTagName("puissance").item(0).getTextContent());
                System.out.println("Moteur nombre: " + eElement.getElementsByTagName("nombre").item(0).getTextContent());
-
+               
+               String avionName = eElement.getElementsByTagName("name").item(0).getTextContent();
+               String avionWeight = eElement.getElementsByTagName("weight").item(0).getTextContent();
+               String moteurType = eElement.getElementsByTagName("moteur").item(0).getAttributes().item(0).getTextContent();
+               String moteurPuissance = eElement.getElementsByTagName("puissance").item(0).getTextContent();
+               
+             
                // Create the Avion object
                Avion avion = new Avion(Long.parseLong(eElement.getAttribute("id")),
                      eElement.getElementsByTagName("name").item(0).getTextContent(),
@@ -81,10 +90,21 @@ public class FileParser {
 
                /* puis on la teste pour effectuer la bonne action */
                if(intituleAction.matches("add")){
-                  restClient.addNewAvion(avion);
+                // Véfiriction unitaire des infos 
+                boolean isValidAddInfos =
+                        checker.checkInfo("'name'" + " dans le fichier " + fileName, avionName) &&
+                        checker.checkInfo("'weight'" + " dans le fichier " + fileName, avionWeight) &&
+                        checker.checkInfo("'type'" + " dans le fichier " + fileName, moteurType) &&
+                        checker.checkInfo("'puissance'" + " dans le fichier " + fileName, moteurPuissance);
+                if(isValidAddInfos) { restClient.addNewAvion(avion); }
                }
-               else if(intituleAction.matches("delete")){
-                  restClient.deleteNewAvion(avion, idAvion);
+               else if(intituleAction.matches("delete") && idAvion > 0L){   
+                boolean isValidUpdateInfos = 
+                        checker.checkInfo("'name'" + " dans le fichier " + fileName, avionName) ||
+                        checker.checkInfo("'weight'" + " dans le fichier " + fileName, avionWeight) ||
+                        checker.checkInfo("'type'" + " dans le fichier " + fileName, moteurType) ||
+                        checker.checkInfo("'puissance'" + " dans le fichier " + fileName, moteurPuissance);
+                  if (isValidUpdateInfos) { restClient.deleteNewAvion(avion, idAvion); }
                }
                else if(intituleAction.matches("update")){
                   restClient.updateNewAvion(avion, idAvion);

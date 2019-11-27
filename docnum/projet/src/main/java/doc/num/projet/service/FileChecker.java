@@ -62,16 +62,10 @@ public class FileChecker {
             restClient.addNewMessage(new Message(contenus, "failure"));
         }
         
-        if (!this.isContentAscii(xmlFileName)) {
-            String contenus = "le contenus du fichier " + xmlFileName + " contient un caractère non ASCII !";
-            restClient.addNewMessage(new Message(contenus, "failure"));
-        }
-        
         return 
                 this.validateXmlFile(xsdPath, xmlPath) && 
                 this.validateFileSize(xmlFileName) && 
-                this.validateFileExtension(xmlFileName) &&
-                this.isContentAscii(xmlFileName);
+                this.validateFileExtension(xmlFileName);
 
     }
 
@@ -117,15 +111,6 @@ public class FileChecker {
         return extension.equals("xml");
     }
     
-    /**
-     * Check that the content of the file is ASCII
-     * @author Solofo R.
-     */
-    private boolean isContentAscii(String filename) {
-        String content = this.readAllBytes("data/XML/" + filename);
-        return Charset.forName("US-ASCII").newEncoder().canEncode(content);
-    }
-    
     
     /**
      * code copied from https://howtodoinjava.com/java/io/java-read-file-to-string-examples/
@@ -141,29 +126,57 @@ public class FileChecker {
     }
     
     /**
+     * check if info is valid or not
+     * @author Solofo R.
+     */
+    public boolean checkInfo(String titreInfo, String info) {
+        if (info.length() == 0) {
+            return false;
+        }
+        return 
+                !this.isContentAscii(titreInfo, info) &&
+                !this.infoContainsOneChar(titreInfo, info) && 
+                !this.infoContainsMoreThan1kChar(titreInfo, info);
+    }
+    
+    
+    /**
+     * Check that the content of the file is ASCII
+     * @author Solofo R.
+     */
+    private boolean isContentAscii(String titreInfo, String info) {
+        if(!Charset.forName("US-ASCII").newEncoder().canEncode(info)){
+            String contenus = "Une info de type " + titreInfo + " contient un caractère non ASCII !";
+            restClient.addNewMessage(new Message(contenus, "failure"));
+            return true;
+        }
+        return false;
+    }
+    
+    /**
      * Check that an info doesn't contains only one char
      * @author Solofo R.
      */
-    public boolean infoContainsOneChar(String xmlFileName, String info) {
+    private boolean infoContainsOneChar(String titreInfo, String info) {
         if (info.length() == 1) {
-            String contenus = "Dans le fichier " + xmlFileName + " l'info " + info + " ne contient q'un seul caractère !";
+            String contenus = "Une info de type " + titreInfo + " ne contient q'un seul caractère !";
             restClient.addNewMessage(new Message(contenus, "failure"));
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
     
     /**
      * Check that an info doesn't contains more than 1000 char
      * @author Solofo R.
      */
-    public boolean infoContainsMoreThan1kChar(String xmlFileName, String info) {
+    private boolean infoContainsMoreThan1kChar(String titreInfo, String info) {
         if(info.length() > 1000){
-            String contenus = "Dans le fichier " + xmlFileName + " l'info " + info + " contient plus de 1000 caractères !";
+            String contenus = "Une info de type " + titreInfo + " contient plus de 1000 caractères !";
             restClient.addNewMessage(new Message(contenus, "failure"));
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
     
 
