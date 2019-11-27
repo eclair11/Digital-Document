@@ -18,6 +18,7 @@ import doc.num.projet.modele.Avion;
 import doc.num.projet.modele.Moteur;
 import doc.num.projet.modele.Message;
 import doc.num.projet.modele.AvionRepository;
+import doc.num.projet.modele.Memoire;
 import doc.num.projet.modele.MemoireRepository;
 import doc.num.projet.modele.MoteurRepository;
 import doc.num.projet.modele.MessageRepository;
@@ -78,8 +79,16 @@ public class AvionRestController {
         return messageArr;
     }
 
+    @RequestMapping(value = "/avionLog", method = RequestMethod.POST)
+    public ResponseEntity<String> addMemoire(@RequestBody Memoire memoire) {
+        memoireRep.save(memoire);
+        System.out.println("idfic = " + memoire.getIdFic());
+        System.out.println("new log saved in memory!");
+        return new ResponseEntity(HttpStatus.CREATED);
+    }
+
     @RequestMapping(value = "/avionAdd/{id}", method = RequestMethod.POST)
-    public ResponseEntity<String> addAVion(@PathVariable("id") Long id, @RequestBody Avion avion) {
+    public ResponseEntity<String> addAVion(@PathVariable("id") Long id, @RequestBody Avion avion, Memoire memoire) {
         /**
          * tout ce qui touche le moteur doit pouvoir être retiré repercutions en cascade
          * (voir classe modifiée)
@@ -113,8 +122,6 @@ public class AvionRestController {
     @RequestMapping(value = "/avionUpdate/{id}", method = RequestMethod.PUT)
     public ResponseEntity<String> updateAVion(@PathVariable("id") Long id, @RequestBody Avion avion) {
         avionRep.findById(id);
-
-        // AvionRepository avionTempRepository = avionRep.findById(id).get() ;
 
         int nbAvion = (int) avionRep.count();
 

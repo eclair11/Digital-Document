@@ -7,6 +7,8 @@
 package doc.num.projet.service;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.inject.Inject;
 import javax.xml.parsers.DocumentBuilder;
@@ -19,6 +21,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import doc.num.projet.modele.Avion;
+import doc.num.projet.modele.Memoire;
 import doc.num.projet.modele.Moteur;
 
 /**
@@ -44,6 +47,9 @@ public class FileParser {
          doc.getDocumentElement().normalize();
          System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
          System.out.println("Intitule :" + doc.getDocumentElement().getAttribute("intitule"));
+         System.out.println("idFic :" + doc.getDocumentElement().getAttribute("idFic"));
+         System.out.println("checksum :" + doc.getDocumentElement().getAttribute("checksum"));
+         System.out.println("dateAction :" + doc.getDocumentElement().getAttribute("dateAction"));
          NodeList nList = doc.getElementsByTagName("avion");
          System.out.println("----------------------------");
 
@@ -79,7 +85,14 @@ public class FileParser {
                      new Moteur(
                            eElement.getElementsByTagName("moteur").item(0).getAttributes().item(0).getTextContent(),
                            Integer.parseInt(eElement.getElementsByTagName("puissance").item(0).getTextContent()),
-                           Integer.parseInt(eElement.getElementsByTagName("nombre").item(0).getTextContent())));
+                           Integer.parseInt(eElement.getElementsByTagName("nombre").item(0).getTextContent())
+                           )
+                           );
+
+
+
+
+
 
                // ask the RestClient to add New avion in DB
 
@@ -87,6 +100,8 @@ public class FileParser {
                String intituleAction = doc.getDocumentElement().getAttribute("intitule");
 
                Long idAvion = Long.parseLong(eElement.getAttribute("id"));
+
+
 
                /* puis on la teste pour effectuer la bonne action */
                if(intituleAction.matches("add")){
@@ -111,7 +126,23 @@ public class FileParser {
                }
 
              }
+
+
+
          }
+
+         // Création de l'objet Memoire et stockage en BDD
+
+         SimpleDateFormat dateFormattee=new SimpleDateFormat("yyyy-MM-dd");
+         Date date = dateFormattee.parse(doc.getDocumentElement().getAttribute("dateAction"));
+
+         Memoire memoire = new Memoire(doc.getDocumentElement().getAttribute("intitule"),
+         doc.getDocumentElement().getAttribute("idFic"),
+         Integer.parseInt(doc.getDocumentElement().getAttribute("checksum")),
+         date
+         );
+
+         restClient.addNewMemoire(memoire);
 
       } catch (Exception e) {
          e.printStackTrace();
