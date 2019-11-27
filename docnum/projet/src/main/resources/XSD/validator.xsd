@@ -23,7 +23,11 @@
                     </complexType>
                 </element>
             </sequence>
-            <attribute name="intitule" type="string"></attribute>
+            
+            <attribute name="intitule" type="string" use="required" ></attribute>
+            <attribute name="idFic" type="string" use="required" ></attribute>
+            <attribute name="checksum" type="int" use="required" ></attribute>
+            <attribute name="dateAction" type="dateTime" use="required" ></attribute>
         </complexType>
     </element>
 </schema>

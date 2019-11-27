@@ -29,8 +29,8 @@ public class RestClient {
 
     private RestTemplate restTemplate = new RestTemplate();
 
-    public void addNewAvion(Avion avion) {
-        this.restTemplate.postForObject("http://localhost:8080/avionAdd", avion, Avion.class);
+    public void addNewAvion(Avion avion, Long id) {
+        this.restTemplate.postForObject("http://localhost:8080/avionAdd/" + id, avion, Avion.class);
     }
 
     public void updateNewAvion(Avion avion, Long id) {

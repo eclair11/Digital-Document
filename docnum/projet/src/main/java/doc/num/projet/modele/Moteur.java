@@ -23,19 +23,27 @@ import lombok.Data;
 @JacksonXmlRootElement(localName = "Moteur")
 public class Moteur {
 
+    /* VARIABLES */
+
+    /* Attributs de la balise <moteur>*/
+
+    @JacksonXmlProperty(isAttribute = true)
+    private String type;
+
+    /* Identifiant unique de <moteur> */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    /* rajouté !!! */
-    @JacksonXmlProperty(isAttribute = true)
-    private String type;
+    /* Éléments de la balise <moteur> */
 
     @JacksonXmlProperty
     private int puissance;
-
+  
     @JacksonXmlProperty
     private int nombre;
+
+    /* CONSTRUCTEURS */
 
     public Moteur() {
 

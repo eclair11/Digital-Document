@@ -25,10 +25,16 @@ public class Avion implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    /* VARIABLES */
+
+    /* Attributs de la balise <avion>*/
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JacksonXmlProperty(isAttribute = true)
     private Long id;
+
+    /* Éléments de la balise <avion> */
 
     @JacksonXmlProperty
     private String name;
@@ -36,28 +42,25 @@ public class Avion implements Serializable {
     @JacksonXmlProperty
     private int weight;
 
-    private int nombre;
-
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     private Moteur moteur;
+
+    /* CONSTRUCTEURS */
 
     public Avion() {
     }
 
-    public Avion(Long id, String name, int weight, int nombre) {
+    public Avion(Long id, String name, int weight, int i, Moteur moteur) {
         this.id = id;
         this.name = name;
         this.weight = weight;
-        this.nombre = nombre;
-    }
-
-    public Avion(Long id, String name, int weight, int nombre, Moteur moteur) {
-        this(id, name, weight, nombre);
         this.moteur = moteur;
     }
 
     public static long getSerialversionuid() {
         return serialVersionUID;
     }
+
+    
 
 }

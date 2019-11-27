@@ -1,5 +1,5 @@
 <?xml version = "1.0"?>
-<action intitule="update">
+<action intitule="update" idFic="update_1" checksum="5" dateAction="1980-03-23T10:20:15">
 
     <avion id = "4">
         <name>Lockheed C-130 Hercules</name>
@@ -16,6 +16,33 @@
         <moteur type="turbostatoréacteur">
             <puissance>1500</puissance>
             <nombre>2</nombre>
+        </moteur>
+    </avion>
+
+    <avion id = "1">
+        <name>AirbusA310</name>
+        <weight>150</weight>
+        <moteur type="magie">
+            <puissance>350</puissance>
+            <nombre>4</nombre>
+        </moteur>
+    </avion>
+   
+    <avion id = "2">
+        <name>Soukhoï Su-27</name>
+        <weight>90</weight>
+        <moteur type="nucléaire">
+            <puissance>122</puissance>
+            <nombre>2</nombre>
+        </moteur>
+    </avion>
+ 
+    <avion id = "3">
+        <name>Canadair CL-415</name>
+        <weight>1</weight>
+        <moteur type="turboréacteur">
+            <puissance>9999</puissance>
+            <nombre>99</nombre>
         </moteur>
     </avion>
     
