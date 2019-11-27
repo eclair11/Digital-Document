@@ -27,16 +27,16 @@
             <nombre>4</nombre>
         </moteur>
     </avion>
-
+   
     <avion id = "2">
-        <name>Soukhoi Su-27</name>
+        <name>Soukhoï Su-27</name>
         <weight>90</weight>
         <moteur type="nucléaire">
             <puissance>122</puissance>
             <nombre>2</nombre>
         </moteur>
     </avion>
-
+ 
     <avion id = "3">
         <name>Canadair CL-415</name>
         <weight>1</weight>
@@ -45,5 +45,5 @@
             <nombre>99</nombre>
         </moteur>
     </avion>
-
+    
 </action>
