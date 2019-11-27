@@ -7,7 +7,6 @@
 package doc.num.projet;
 
 import javax.inject.Inject;
-import javax.lang.model.element.Element;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,12 +22,12 @@ import doc.num.projet.modele.Avion;
 import doc.num.projet.modele.Moteur;
 import doc.num.projet.modele.Message;
 import doc.num.projet.modele.AvionRepository;
+import doc.num.projet.modele.MemoireRepository;
 import doc.num.projet.modele.MoteurRepository;
 import doc.num.projet.modele.MessageRepository;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  *
@@ -46,6 +45,9 @@ public class AvionRestController {
 
     @Inject
     public MessageRepository messageRep;
+
+    @Inject
+    public MemoireRepository memoireRep;
 
     @RequestMapping(value = "/avions", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Avion[] getAllAvion() {
