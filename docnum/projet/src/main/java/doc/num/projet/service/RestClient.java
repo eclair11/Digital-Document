@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import doc.num.projet.modele.Avion;
+import doc.num.projet.modele.Memoire;
 import doc.num.projet.modele.Message;
 
 /**
@@ -44,4 +45,8 @@ public class RestClient {
     public void addNewMessage(Message message) {
         this.restTemplate.postForObject("http://localhost:8080/message", message, Message.class);
     }
+
+	public void addNewMemoire(Memoire memoire) {
+        this.restTemplate.postForObject("http://localhost:8080/avionLog", memoire, Memoire.class);
+	}
 }

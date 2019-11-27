@@ -48,7 +48,7 @@ public class Memoire {
     private int checksum;
 
     @Temporal(TemporalType.DATE)
-    private Date dateAction = new Date();
+    private Date dateAction;
     
     /* CONSTRUCTEURS */
 
