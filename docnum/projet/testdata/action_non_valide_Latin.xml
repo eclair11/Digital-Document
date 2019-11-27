@@ -11,7 +11,7 @@
     </avion>
    
     <avion id = "9">
-        <name>Soukhoi Su-27</name>
+        <name>Soukhoï Su-27</name>
         <weight>16</weight>
         <moteur type="turboréacteur">
             <puissance>122</puissance>

@@ -3,11 +3,19 @@
 <schema xmlns="http://www.w3.org/2001/XMLSchema">
     <element name="action">
         <complexType>
+        
             <sequence maxOccurs="unbounded">
                 <element name="avion">
                     <complexType>
                         <all>
-                            <element name="name" type="string"></element>
+                            <element name="name">
+                                <simpleType>
+                                    <restriction base="string">
+                                        <pattern value="\p{IsBasicLatin}*"/>
+                                    </restriction>
+                                </simpleType>
+                            </element>
+                                 
                             <element name="weight" type="integer"></element>
                             <element name="moteur">
                                 <complexType>
@@ -25,7 +33,8 @@
             </sequence>
             
             <attribute name="intitule" type="string" use="required" ></attribute>
-            <attribute name="idFic" type="string" use="required" ></attribute>
+            <attribute name="idFic" type="string" use="required" ></attribute>               
+            <attribute name="nomVerif" type="string" use="required" ></attribute>
             <attribute name="checksum" type="int" use="required" ></attribute>
             <attribute name="dateAction" type="dateTime" use="required" ></attribute>
         </complexType>

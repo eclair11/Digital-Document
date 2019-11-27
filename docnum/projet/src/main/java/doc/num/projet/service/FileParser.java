@@ -45,6 +45,7 @@ public class FileParser {
          System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
          System.out.println("Intitule :" + doc.getDocumentElement().getAttribute("intitule"));
          System.out.println("idFic :" + doc.getDocumentElement().getAttribute("idFic"));
+         System.out.println("nomVerif :" + doc.getDocumentElement().getAttribute("nomVerif"));
          System.out.println("checksum :" + doc.getDocumentElement().getAttribute("checksum"));
          System.out.println("dateAction :" + doc.getDocumentElement().getAttribute("dateAction"));
          NodeList nList = doc.getElementsByTagName("avion");
@@ -118,6 +119,7 @@ public class FileParser {
 
          Memoire memoire = new Memoire(doc.getDocumentElement().getAttribute("intitule"),
          doc.getDocumentElement().getAttribute("idFic"),
+         doc.getDocumentElement().getAttribute("nomVerif"),
          Integer.parseInt(doc.getDocumentElement().getAttribute("checksum")),
          date
          );

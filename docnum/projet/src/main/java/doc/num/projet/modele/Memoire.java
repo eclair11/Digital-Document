@@ -42,6 +42,12 @@ public class Memoire {
     private String idFic;
 
     /**
+     * id unique du fichier
+     * un fichier ne peut être employé plus d'une fois
+     */
+    private String nomVerif;
+
+    /**
      * nombre d'informations déclarées par action 
      * qui doit correspondre avec le nb réel 
      */
@@ -55,11 +61,14 @@ public class Memoire {
     public Memoire() {
     }
 
-    public Memoire(String intitule, String idFic, int checksum, Date dateAction) {
-        this.intitule = intitule;
-        this.idFic = idFic;
-        this.checksum = checksum;
-        this.dateAction = dateAction;
-    }
+	public Memoire(String intitule, String idFic, String nomVerif, int checksum, Date dateAction) {
+		this.intitule = intitule;
+		this.idFic = idFic;
+		this.nomVerif = nomVerif;
+		this.checksum = checksum;
+		this.dateAction = dateAction;
+	}
+
+    
     
 }

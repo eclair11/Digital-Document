@@ -29,7 +29,7 @@
     </avion>
    
     <avion id = "2">
-        <name>Soukhoi Su-27</name>
+        <name>Soukhoï Su-27</name>
         <weight>90</weight>
         <moteur type="nucléaire">
             <puissance>122</puissance>
