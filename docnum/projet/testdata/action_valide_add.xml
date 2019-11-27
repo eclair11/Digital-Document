@@ -11,7 +11,7 @@
     </avion>
    
     <avion id = "9">
-        <name>S</name>
+        <name>Sode</name>
         <weight>16</weight>
         <moteur type="turboreacteur">
             <puissance>122</puissance>
@@ -20,7 +20,7 @@
     </avion>
    
     <avion id = "10">
-        <name>Cénadair CL-415</name>
+        <name>Cenadair CL-415</name>
         <weight>12</weight>
         <moteur type="turboreacteur">
             <puissance>1780</puissance>

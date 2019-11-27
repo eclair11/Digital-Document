@@ -50,6 +50,14 @@ public class FileParser {
          System.out.println("idFic :" + doc.getDocumentElement().getAttribute("idFic"));
          System.out.println("checksum :" + doc.getDocumentElement().getAttribute("checksum"));
          System.out.println("dateAction :" + doc.getDocumentElement().getAttribute("dateAction"));
+         
+         // Vérifier si la date de l'info est valide  
+         if(!checker.isDateValid(fileName, doc.getDocumentElement().getAttribute("dateAction"))) {
+             return;
+         }
+         
+         
+         
          NodeList nList = doc.getElementsByTagName("avion");
          System.out.println("----------------------------");
 
@@ -114,6 +122,7 @@ public class FileParser {
                 if(isValidAddInfos) { restClient.addNewAvion(avion, idAvion); }
                }
                else if(intituleAction.matches("update")){
+                   // Véfiriction unitaire des infos
                    boolean isValidUpdateInfos =
                         checker.checkInfo("'name'" + " dans le fichier " + fileName, avionName) ||
                         checker.checkInfo("'weight'" + " dans le fichier " + fileName, avionWeight) ||

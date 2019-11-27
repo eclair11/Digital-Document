@@ -25,6 +25,13 @@ import java.nio.charset.Charset;
 import java.nio.file.Paths;
 import java.nio.file.Files;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.Month;
+import java.time.temporal.ChronoUnit;
+
+
 /**
  *
  * @author Elias R. et Solofo R.
@@ -177,6 +184,29 @@ public class FileChecker {
             return true;
         }
         return false;
+    }
+    
+    /**
+     * Check that the given date is valid (less than 3 month)
+     * @author Solofo R.
+     */
+    public boolean isDateValid(String filename, String date) {
+        // decode the date
+        String dateArray[] = date.split("-");
+        int year = Integer.parseInt(dateArray[0]);
+        int month = Integer.parseInt(dateArray[1]);
+        int day = Integer.parseInt(dateArray[2].substring(0, 2));
+        LocalDateTime dateInfo = LocalDateTime.now();
+        dateInfo = dateInfo.withDayOfMonth(day).withYear(year).withMonth(month);
+        // Get the current date and time
+        LocalDateTime currentTime = LocalDateTime.now();
+        System.out.println(ChronoUnit.MONTHS.between(currentTime, dateInfo));
+        if (ChronoUnit.MONTHS.between(currentTime, dateInfo) < -3) {
+            String contenus = "la date de l'info dans le fichier " + filename + " est plus ancienne que 3 mois avant la date du jour !";
+            restClient.addNewMessage(new Message(contenus, "failure"));
+            return false;
+        }
+        return true;
     }
     
 
