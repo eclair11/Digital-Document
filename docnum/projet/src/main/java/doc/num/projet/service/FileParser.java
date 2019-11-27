@@ -96,18 +96,18 @@ public class FileParser {
                         checker.checkInfo("'weight'" + " dans le fichier " + fileName, avionWeight) &&
                         checker.checkInfo("'type'" + " dans le fichier " + fileName, moteurType) &&
                         checker.checkInfo("'puissance'" + " dans le fichier " + fileName, moteurPuissance);
-                if(isValidAddInfos) { restClient.addNewAvion(avion); }
+                if(isValidAddInfos) { restClient.addNewAvion(avion, idAvion); }
                }
-               else if(intituleAction.matches("delete") && idAvion > 0L){
-                boolean isValidUpdateInfos =
+               else if(intituleAction.matches("update")){
+                   boolean isValidUpdateInfos =
                         checker.checkInfo("'name'" + " dans le fichier " + fileName, avionName) ||
                         checker.checkInfo("'weight'" + " dans le fichier " + fileName, avionWeight) ||
                         checker.checkInfo("'type'" + " dans le fichier " + fileName, moteurType) ||
                         checker.checkInfo("'puissance'" + " dans le fichier " + fileName, moteurPuissance);
-                  if (isValidUpdateInfos) { restClient.deleteNewAvion(avion, idAvion); }
+                  if (isValidUpdateInfos) { restClient.updateNewAvion(avion, idAvion); }
                }
-               else if(intituleAction.matches("update")){
-                  restClient.updateNewAvion(avion, idAvion);
+               else if(intituleAction.matches("delete") && idAvion > 0L){
+                  restClient.deleteNewAvion(avion, idAvion);
                }
 
              }
