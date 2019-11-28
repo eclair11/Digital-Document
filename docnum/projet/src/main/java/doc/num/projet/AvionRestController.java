@@ -21,9 +21,11 @@ import doc.num.projet.modele.AvionRepository;
 import doc.num.projet.modele.Memoire;
 import doc.num.projet.modele.MemoireRepository;
 import doc.num.projet.modele.MoteurRepository;
+import doc.num.projet.service.Scribe;
 import doc.num.projet.modele.MessageRepository;
 
 import java.util.List;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -88,7 +90,8 @@ public class AvionRestController {
     }
 
     @RequestMapping(value = "/avionAdd/{id}", method = RequestMethod.POST)
-    public ResponseEntity<String> addAVion(@PathVariable("id") Long id, @RequestBody Avion avion, Memoire memoire) {
+    public ResponseEntity<String> addAVion(@PathVariable("id") Long id, @RequestBody Avion avion, Memoire memoire)
+            throws IOException {
         /**
          * tout ce qui touche le moteur doit pouvoir être retiré repercutions en cascade
          * (voir classe modifiée)
@@ -108,6 +111,9 @@ public class AvionRestController {
 
                 System.out.println(avion);
                 System.out.println("Avion déjà présent");
+
+                Scribe.logRajout("AJOUT annulé : L'avion " + avion.getName() + " est déjà présent dans la BDD\n" );
+
                 return new ResponseEntity(HttpStatus.FOUND);
             }
 
@@ -116,11 +122,16 @@ public class AvionRestController {
         System.out.println(avion);
         avionRep.save(avion);
         System.out.println("new avion saved !");
+
+        Scribe.logRajout("AJOUT confirmé : L'avion " + avion.getName() + " a été ajouté dans la BDD\n" );
+
+
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
     @RequestMapping(value = "/avionUpdate/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<String> updateAVion(@PathVariable("id") Long id, @RequestBody Avion avion) {
+    public ResponseEntity<String> updateAVion(@PathVariable("id") Long id, @RequestBody Avion avion)
+            throws IOException {
         avionRep.findById(id);
 
         int nbAvion = (int) avionRep.count();
@@ -137,6 +148,7 @@ public class AvionRestController {
         if (avionRep.findById(id).get().getId()  != avion.getId()) {
             System.out.println(avion);
             System.out.println("UPDATE suspendu: L'avion à mettre à jour n'est pas présent dans la BDD");
+            Scribe.logRajout("UPDATE suspendu : L'avion " + avion.getName() + " n'est pas présent dans la BDD\n" );
             return new ResponseEntity(HttpStatus.FOUND);
         }
 
@@ -144,13 +156,15 @@ public class AvionRestController {
         avionRep.save(avion);
         System.out.println(avion);
         System.out.println("new avion updated !");
+        Scribe.logRajout("UPDATE confirmé : Les infos de l'avion " + avion.getName() + " ont été mises à jour\n" );
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @DeleteMapping("/avionDel/{id}")
-    public void delAVion(@PathVariable("id") Long id) {
+    public void delAVion(@PathVariable("id") Long id) throws IOException {
         avionRep.deleteById(id);
         System.out.println("avion deleted !");
+        Scribe.logRajout("SUPPRESSION confirmé : L'avion dont l'identifiant est " + id + " a bien été effacé\n" );
     }
 
 }

@@ -45,24 +45,52 @@ public class FileParser {
          DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
          Document doc = dBuilder.parse(inputFile);
          doc.getDocumentElement().normalize();
-         System.out.println("Root element :" + doc.getDocumentElement().getNodeName());
-         System.out.println("Intitule :" + doc.getDocumentElement().getAttribute("intitule"));
-         System.out.println("idFic :" + doc.getDocumentElement().getAttribute("idFic"));
-         System.out.println("nomVerif :" + doc.getDocumentElement().getAttribute("nomVerif"));
-         System.out.println("checksum :" + doc.getDocumentElement().getAttribute("checksum"));
-         System.out.println("dateAction :" + doc.getDocumentElement().getAttribute("dateAction"));
-         
+
+         String nomNoeudPrincipal = doc.getDocumentElement().getNodeName();
+         String intituleAction = doc.getDocumentElement().getAttribute("intitule");
+         String idFic = doc.getDocumentElement().getAttribute("idFic");
+         String nomVerif = doc.getDocumentElement().getAttribute("nomVerif");
+         String checksum = doc.getDocumentElement().getAttribute("checksum");
+         String dateAction = doc.getDocumentElement().getAttribute("dateAction");
+
+         System.out.println("Root element :" + nomNoeudPrincipal);
+         System.out.println("Intitule :" + intituleAction);
+         System.out.println("idFic :" + idFic);
+         System.out.println("nomVerif :" + nomVerif);
+         System.out.println("checksum :" + checksum);
+         System.out.println("dateAction :" + dateAction);
+
+         /* inscription des infos dans le log */
+         Scribe.logMemoire("Intitule de l'action          : " + intituleAction + "\n" +
+                           "Identifiant unique du fichier : " + idFic + "\n" +
+                           "Nom du vérificateur           : " + nomVerif + "\n" +
+                           "Checksum déclaré du fichier   : " + checksum + "\n" +
+                           "Date de l'action déclarée     : " + dateAction + "\n\n"
+                           );
+
+
          // Vérifier si la date de l'info est valide  
-         if(!checker.isDateValid(fileName, doc.getDocumentElement().getAttribute("dateAction"))) {
+         if(!checker.isDateValid(fileName, dateAction)) {
              return;
-         }
-         
-         
+         }         
          
          NodeList nList = doc.getElementsByTagName("avion");
+         
+         /* on récupère le nb d'avion pour le comparer au checksum */
+         int nbAvion = nList.getLength();
+         String verdictChecksum = "bonChecksum";
+         if(nbAvion != Integer.parseInt(checksum)){
+            verdictChecksum = "faux";
+            checker.isChecksumCorrect("'checksum'" + " dans le fichier " + fileName, verdictChecksum);
+            return;
+         }
+      
+         System.out.println("!!!!!!!!!!!!!!nombre d'avions = " + nbAvion + "\n");
+         System.out.println("!!!!!!!!!!!!!!!!!!verdictChecksum = " + verdictChecksum);
+
          System.out.println("----------------------------");
 
-         System.out.println("Root element :" + doc.getDocumentElement().getAttribute("intitule"));
+         System.out.println("Root element :" + intituleAction);
 
          for (int temp = 0; temp < nList.getLength(); temp++) {
             Node nNode = nList.item(temp);
@@ -70,47 +98,34 @@ public class FileParser {
 
             if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                Element eElement = (Element) nNode;
-               System.out.println("Avion Id : " + eElement.getAttribute("id"));
-               System.out.println("Name : " + eElement.getElementsByTagName("name").item(0).getTextContent());
-               System.out.println("Weight : " + eElement.getElementsByTagName("weight").item(0).getTextContent());
 
-               /* partie moteur */
-               System.out.println("Moteur type: "
-                     + eElement.getElementsByTagName("moteur").item(0).getAttributes().item(0).getTextContent());
-               System.out.println(
-                     "Moteur puissance: " + eElement.getElementsByTagName("puissance").item(0).getTextContent());
-               System.out.println("Moteur nombre: " + eElement.getElementsByTagName("nombre").item(0).getTextContent());
-
+               String avionId = eElement.getAttribute("id");
                String avionName = eElement.getElementsByTagName("name").item(0).getTextContent();
                String avionWeight = eElement.getElementsByTagName("weight").item(0).getTextContent();
                String moteurType = eElement.getElementsByTagName("moteur").item(0).getAttributes().item(0).getTextContent();
                String moteurPuissance = eElement.getElementsByTagName("puissance").item(0).getTextContent();
+               String moteurNombre = eElement.getElementsByTagName("nombre").item(0).getTextContent();
 
+               System.out.println("Avion Id : " + avionId);
+               System.out.println("Name : " + avionName);
+               System.out.println("Weight : " + avionWeight);
+
+               /* partie moteur */
+               System.out.println("Moteur type: " + moteurType);
+               System.out.println("Moteur puissance: " + moteurPuissance);
+               System.out.println("Moteur nombre: " + moteurNombre);
 
                // Create the Avion object
-               Avion avion = new Avion(Long.parseLong(eElement.getAttribute("id")),
-                     eElement.getElementsByTagName("name").item(0).getTextContent(),
-                     Integer.parseInt(eElement.getElementsByTagName("weight").item(0).getTextContent()), 1,
-                     new Moteur(
-                           eElement.getElementsByTagName("moteur").item(0).getAttributes().item(0).getTextContent(),
-                           Integer.parseInt(eElement.getElementsByTagName("puissance").item(0).getTextContent()),
-                           Integer.parseInt(eElement.getElementsByTagName("nombre").item(0).getTextContent())
-                           )
-                           );
+               Avion avion = new Avion(
+                  Long.parseLong(avionId),
+                  avionName, 
+                  Integer.parseInt(avionWeight),
+                  new Moteur(moteurType,Integer.parseInt(moteurPuissance), Integer.parseInt(moteurNombre))
+                  );
 
-
-
-
-
-
-               // ask the RestClient to add New avion in DB
-
-               /* on stocke la chaîne 'intitulé' de la balise 'action' */
-               String intituleAction = doc.getDocumentElement().getAttribute("intitule");
+               /* on ajoute un nouvel avion à la base de données */
 
                Long idAvion = Long.parseLong(eElement.getAttribute("id"));
-
-
 
                /* puis on la teste pour effectuer la bonne action */
                if(intituleAction.matches("add")){
@@ -120,6 +135,7 @@ public class FileParser {
                         checker.checkInfo("'weight'" + " dans le fichier " + fileName, avionWeight) &&
                         checker.checkInfo("'type'" + " dans le fichier " + fileName, moteurType) &&
                         checker.checkInfo("'puissance'" + " dans le fichier " + fileName, moteurPuissance);
+
                 if(isValidAddInfos) { restClient.addNewAvion(avion, idAvion); }
                }
                else if(intituleAction.matches("update")){
@@ -136,8 +152,6 @@ public class FileParser {
                }
 
              }
-
-
 
          }
 

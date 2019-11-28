@@ -1,0 +1,182 @@
+Fichier de log du scrutateur crée le 2019-11-28 à 07:23:25
+
+Intitule de l'action          : add
+Identifiant unique du fichier : add_1
+Nom du vérificateur           : XSDValidator
+Checksum déclaré du fichier   : 5
+Date de l'action déclarée     : 2019-11-23T10:20:15
+
+AJOUT confirmé : L'avion AirbusA310 a été ajouté dans la BDD
+AJOUT confirmé : L'avion Soukhoi Su-27 a été ajouté dans la BDD
+AJOUT confirmé : L'avion Cenadair CL-415 a été ajouté dans la BDD
+AJOUT confirmé : L'avion Lockheed C-130 Hercules a été ajouté dans la BDD
+AJOUT confirmé : L'avion Lockheed SR-71 Blackbird a été ajouté dans la BDD
+
+
+--------------------------------
+
+Modification en date du 2019-11-28 à 07:23:33
+
+Intitule de l'action          : update
+Identifiant unique du fichier : update_1
+Nom du vérificateur           : XSDValidator
+Checksum déclaré du fichier   : 5
+Date de l'action déclarée     : 2019-11-24T05:23:15
+
+UPDATE confirmé : Les infos de l'avion Lockheed C-130 Hercules ont été mises à jour
+UPDATE confirmé : Les infos de l'avion Lockheed SR-71 Blackbird ont été mises à jour
+UPDATE confirmé : Les infos de l'avion AirbusA310 ont été mises à jour
+UPDATE confirmé : Les infos de l'avion Soukhoi Su-27 ont été mises à jour
+UPDATE confirmé : Les infos de l'avion Canadair CL-415 ont été mises à jour
+
+
+--------------------------------
+
+Modification en date du 2019-11-28 à 07:23:45
+
+Intitule de l'action          : delete
+Identifiant unique du fichier : del_1
+Nom du vérificateur           : XSDValidator
+Checksum déclaré du fichier   : 3
+Date de l'action déclarée     : 2019-11-25T18:20:15
+
+
+
+--------------------------------
+
+Modification en date du 2019-11-28 à 07:25:19
+
+Intitule de l'action          : add
+Identifiant unique du fichier : add_1
+Nom du vérificateur           : XSDValidator
+Checksum déclaré du fichier   : 5
+Date de l'action déclarée     : 2019-11-23T10:20:15
+
+AJOUT confirmé : L'avion AirbusA310 a été ajouté dans la BDD
+AJOUT confirmé : L'avion Soukhoi Su-27 a été ajouté dans la BDD
+AJOUT confirmé : L'avion Cenadair CL-415 a été ajouté dans la BDD
+AJOUT confirmé : L'avion Lockheed C-130 Hercules a été ajouté dans la BDD
+AJOUT confirmé : L'avion Lockheed SR-71 Blackbird a été ajouté dans la BDD
+
+
+--------------------------------
+
+Modification en date du 2019-11-28 à 07:25:28
+
+Intitule de l'action          : delete
+Identifiant unique du fichier : del_1
+Nom du vérificateur           : XSDValidator
+Checksum déclaré du fichier   : 3
+Date de l'action déclarée     : 2019-11-25T18:20:15
+
+
+
+--------------------------------
+
+Modification en date du 2019-11-28 à 07:28:07
+
+Intitule de l'action          : add
+Identifiant unique du fichier : add_1
+Nom du vérificateur           : XSDValidator
+Checksum déclaré du fichier   : 5
+Date de l'action déclarée     : 2019-11-23T10:20:15
+
+AJOUT confirmé : L'avion AirbusA310 a été ajouté dans la BDD
+AJOUT confirmé : L'avion Soukhoi Su-27 a été ajouté dans la BDD
+AJOUT confirmé : L'avion Cenadair CL-415 a été ajouté dans la BDD
+AJOUT confirmé : L'avion Lockheed C-130 Hercules a été ajouté dans la BDD
+AJOUT confirmé : L'avion Lockheed SR-71 Blackbird a été ajouté dans la BDD
+
+
+--------------------------------
+
+Modification en date du 2019-11-28 à 07:28:15
+
+Intitule de l'action          : delete
+Identifiant unique du fichier : del_1
+Nom du vérificateur           : XSDValidator
+Checksum déclaré du fichier   : 3
+Date de l'action déclarée     : 2019-11-25T18:20:15
+
+SUPPRESSION confirmé : L'avion a bien été effacé
+SUPPRESSION confirmé : L'avion a bien été effacé
+SUPPRESSION confirmé : L'avion a bien été effacé
+
+
+--------------------------------
+
+Modification en date du 2019-11-28 à 07:28:20
+
+Intitule de l'action          : delete
+Identifiant unique du fichier : del_1
+Nom du vérificateur           : XSDValidator
+Checksum déclaré du fichier   : 3
+Date de l'action déclarée     : 2019-11-25T18:20:15
+
+SUPPRESSION confirmé : L'avion a bien été effacé
+SUPPRESSION confirmé : L'avion a bien été effacé
+SUPPRESSION confirmé : L'avion a bien été effacé
+
+
+--------------------------------
+
+Modification en date du 2019-11-28 à 07:29:14
+
+Intitule de l'action          : add
+Identifiant unique du fichier : add_1
+Nom du vérificateur           : XSDValidator
+Checksum déclaré du fichier   : 5
+Date de l'action déclarée     : 2019-11-23T10:20:15
+
+AJOUT confirmé : L'avion AirbusA310 a été ajouté dans la BDD
+AJOUT confirmé : L'avion Soukhoi Su-27 a été ajouté dans la BDD
+AJOUT confirmé : L'avion Cenadair CL-415 a été ajouté dans la BDD
+AJOUT confirmé : L'avion Lockheed C-130 Hercules a été ajouté dans la BDD
+AJOUT confirmé : L'avion Lockheed SR-71 Blackbird a été ajouté dans la BDD
+
+
+--------------------------------
+
+Modification en date du 2019-11-28 à 07:29:22
+
+Intitule de l'action          : delete
+Identifiant unique du fichier : del_1
+Nom du vérificateur           : XSDValidator
+Checksum déclaré du fichier   : 3
+Date de l'action déclarée     : 2019-11-25T18:20:15
+
+SUPPRESSION confirmé : L'avion a bien été effacé
+SUPPRESSION confirmé : L'avion a bien été effacé
+SUPPRESSION confirmé : L'avion a bien été effacé
+
+
+--------------------------------
+
+Modification en date du 2019-11-28 à 07:30:30
+
+Intitule de l'action          : add
+Identifiant unique du fichier : add_1
+Nom du vérificateur           : XSDValidator
+Checksum déclaré du fichier   : 5
+Date de l'action déclarée     : 2019-11-23T10:20:15
+
+AJOUT confirmé : L'avion AirbusA310 a été ajouté dans la BDD
+AJOUT confirmé : L'avion Soukhoi Su-27 a été ajouté dans la BDD
+AJOUT confirmé : L'avion Cenadair CL-415 a été ajouté dans la BDD
+AJOUT confirmé : L'avion Lockheed C-130 Hercules a été ajouté dans la BDD
+AJOUT confirmé : L'avion Lockheed SR-71 Blackbird a été ajouté dans la BDD
+
+
+--------------------------------
+
+Modification en date du 2019-11-28 à 07:30:40
+
+Intitule de l'action          : delete
+Identifiant unique du fichier : del_1
+Nom du vérificateur           : XSDValidator
+Checksum déclaré du fichier   : 3
+Date de l'action déclarée     : 2019-11-25T18:20:15
+
+SUPPRESSION confirmé : L'avion 1a bien été effacé
+SUPPRESSION confirmé : L'avion 2a bien été effacé
+SUPPRESSION confirmé : L'avion 3a bien été effacé

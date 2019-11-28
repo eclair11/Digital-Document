@@ -50,7 +50,7 @@ public class Avion implements Serializable {
     public Avion() {
     }
 
-    public Avion(Long id, String name, int weight, int i, Moteur moteur) {
+    public Avion(Long id, String name, int weight, Moteur moteur) {
         this.id = id;
         this.name = name;
         this.weight = weight;

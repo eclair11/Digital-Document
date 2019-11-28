@@ -25,10 +25,7 @@ import java.nio.charset.Charset;
 import java.nio.file.Paths;
 import java.nio.file.Files;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.Month;
 import java.time.temporal.ChronoUnit;
 
 
@@ -140,6 +137,7 @@ public class FileChecker {
         if (info.length() == 0) {
             return false;
         }
+        
         return 
                 !this.isContentAscii(titreInfo, info) &&
                 !this.infoContainsOneChar(titreInfo, info) && 
@@ -148,6 +146,20 @@ public class FileChecker {
     
     
     /**
+     * Vérifie que le checksum corresponde bien au nombre de balises <avion>
+     * @author Nicolas T..
+     */
+    public boolean isChecksumCorrect(String titreInfo, String info) {
+        if(info.matches("faux")){
+            String contenus = "Le checksum du fichier est erroné !";
+            restClient.addNewMessage(new Message(contenus, "failure"));
+            return true;
+        }
+        return false;
+    }
+
+
+        /**
      * Check that the content of the file is ASCII
      * @author Solofo R.
      */
@@ -159,6 +171,7 @@ public class FileChecker {
         }
         return false;
     }
+
     
     /**
      * Check that an info doesn't contains only one char

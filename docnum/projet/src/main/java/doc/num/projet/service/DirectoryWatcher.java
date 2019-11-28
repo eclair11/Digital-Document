@@ -60,6 +60,7 @@ public class DirectoryWatcher extends Thread {
                         fileName = event.context().toString();
                         lastFilename = fileName;
                         boolean isValid = checker.checkFile(fileName);
+                        /* !!! test du checksum à insérer ici */
                         if (isValid) { // si le fichier XML est valide
                             // ask rest client to send success message
                             String contenus = "le fichier " + fileName + " a été accépté !";
