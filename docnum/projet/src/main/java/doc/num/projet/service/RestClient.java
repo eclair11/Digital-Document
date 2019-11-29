@@ -48,5 +48,9 @@ public class RestClient {
 
 	public void addNewMemoire(Memoire memoire) {
         this.restTemplate.postForObject("http://localhost:8080/avionLog", memoire, Memoire.class);
+    }
+    
+    public String checkMemoire(String idFic) {
+       return  this.restTemplate.postForObject("http://localhost:8080/checkLog", idFic, String.class);
 	}
 }

@@ -82,27 +82,56 @@ public class AvionRestController {
     }
 
     @RequestMapping(value = "/avionLog", method = RequestMethod.POST)
-    public ResponseEntity<String> addMemoire(@RequestBody Memoire memoire) {
+    public ResponseEntity<String> addMemoire(@RequestBody Memoire memoire) throws IOException {
+
+        Iterable<Memoire> memoireIterator = memoireRep.findAll();
+
+        for (Memoire m : memoireIterator) {
+            
+            if (m.getIdFic().matches(memoire.getIdFic())) {
+
+                System.out.println(memoire);
+                System.out.println("fichier déjà utilisé");
+
+                Scribe.logRajout("AJOUT fichier anulé : L'avion " + memoire.getIdFic() + " est déjà présent dans la BDD\n" );
+
+                return new ResponseEntity(HttpStatus.FOUND);
+            }
+
+        }
+
         memoireRep.save(memoire);
         System.out.println("idfic = " + memoire.getIdFic());
         System.out.println("new log saved in memory!");
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
+
+        @RequestMapping(value = "/checkLog", method = RequestMethod.POST)
+        public String checkMemoire(@RequestBody String idFic) throws IOException {
+
+        Iterable<Memoire> memoireIterator = memoireRep.findAll();
+            
+
+        for (Memoire m : memoireIterator) {
+            
+            if (m.getIdFic().matches(idFic)) {
+
+                
+                Scribe.logRajout("AJOUT fichier anulé : L'avion " + idFic + " est déjà présent dans la BDD\n" );
+
+                return "false";
+            }
+
+        }
+        return "true";
+    }
+
+
     @RequestMapping(value = "/avionAdd/{id}", method = RequestMethod.POST)
     public ResponseEntity<String> addAVion(@PathVariable("id") Long id, @RequestBody Avion avion, Memoire memoire)
             throws IOException {
-        /**
-         * tout ce qui touche le moteur doit pouvoir être retiré repercutions en cascade
-         * (voir classe modifiée)
-         */
-        /*
-         * System.out.println(avion.getMoteur()); moteurRep.save(avion.getMoteur());
-         * System.out.println("new moteur saved !");
-         */
-
-        // int nbAvion = (int) avionRep.count();
-
+      
         Iterable<Avion> avionIterator = avionRep.findAll();
 
         for (Avion a : avionIterator) {

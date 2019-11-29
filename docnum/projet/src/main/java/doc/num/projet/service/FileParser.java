@@ -14,7 +14,10 @@ import javax.inject.Inject;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RestController;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -22,6 +25,7 @@ import org.w3c.dom.NodeList;
 
 import doc.num.projet.modele.Avion;
 import doc.num.projet.modele.Memoire;
+import doc.num.projet.modele.MemoireRepository;
 import doc.num.projet.modele.Moteur;
 
 /**
@@ -114,6 +118,14 @@ public class FileParser {
                System.out.println("Moteur type: " + moteurType);
                System.out.println("Moteur puissance: " + moteurPuissance);
                System.out.println("Moteur nombre: " + moteurNombre);
+
+               /* vérification de l'identificateur unique du fichier */
+               
+               System.out.println(restClient.checkMemoire(idFic));
+               if(restClient.checkMemoire(idFic).matches("false")){
+                  checker.isIdFicPresent(fileName);
+                  return;
+               }
 
                // Create the Avion object
                Avion avion = new Avion(

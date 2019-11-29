@@ -41,6 +41,11 @@ public class FileChecker {
     RestClient restClient;
     
     private final int MAX_SIZE = 5; // 5ko 
+
+    public void isIdFicPresent(String xmlFileName){      
+            String contenus = "Le fichier" + xmlFileName + " a déjà été utilisé !";
+            restClient.addNewMessage(new Message(contenus, "failure"));
+    } 
     
     /**
      * the main method that will check that the given file is valid
@@ -131,9 +136,11 @@ public class FileChecker {
     
     /**
      * check if info is valid or not
+     * 
      * @author Solofo R.
+     * @throws IOException
      */
-    public boolean checkInfo(String titreInfo, String info) {
+    public boolean checkInfo(String titreInfo, String info) throws IOException {
         if (info.length() == 0) {
             return false;
         }
@@ -147,12 +154,17 @@ public class FileChecker {
     
     /**
      * Vérifie que le checksum corresponde bien au nombre de balises <avion>
-     * @author Nicolas T..
+     * 
+     * @author Nicolas T.
+     * @throws IOException
      */
-    public boolean isChecksumCorrect(String titreInfo, String info) {
+    public boolean isChecksumCorrect(String titreInfo, String info) throws IOException {
         if(info.matches("faux")){
             String contenus = "Le checksum du fichier est erroné !";
             restClient.addNewMessage(new Message(contenus, "failure"));
+
+            /* rajout du commentaire dans le log */
+            Scribe.logRajout("Opération annulée : Le checksum du fichier est erroné !\n" );
             return true;
         }
         return false;
@@ -161,12 +173,18 @@ public class FileChecker {
 
         /**
      * Check that the content of the file is ASCII
+     * 
      * @author Solofo R.
+     * @author Nicolas T.
+     * @throws IOException
      */
-    private boolean isContentAscii(String titreInfo, String info) {
+    private boolean isContentAscii(String titreInfo, String info) throws IOException {
         if(!Charset.forName("US-ASCII").newEncoder().canEncode(info)){
             String contenus = "Une info de type " + titreInfo + " contient un caractère non ASCII !";
             restClient.addNewMessage(new Message(contenus, "failure"));
+
+            /* rajout du commentaire dans le log */
+            Scribe.logRajout("Opération annulée : Des caractères non ASCII ont été detecté\n" );
             return true;
         }
         return false;
@@ -175,12 +193,18 @@ public class FileChecker {
     
     /**
      * Check that an info doesn't contains only one char
+     * 
      * @author Solofo R.
+     * @author Nicolas T.
+     * @throws IOException
      */
-    private boolean infoContainsOneChar(String titreInfo, String info) {
+    private boolean infoContainsOneChar(String titreInfo, String info) throws IOException {
         if (info.length() == 1) {
             String contenus = "Une info de type " + titreInfo + " ne contient q'un seul caractère !";
             restClient.addNewMessage(new Message(contenus, "failure"));
+
+            /* rajout du commentaire dans le log */
+            Scribe.logRajout("Opération annulée : L'information ne contient qu'un seul caractère\n" );
             return true;
         }
         return false;
@@ -188,12 +212,18 @@ public class FileChecker {
     
     /**
      * Check that an info doesn't contains more than 1000 char
+     * 
      * @author Solofo R.
+     * @author Nicolas T.
+     * @throws IOException
      */
-    private boolean infoContainsMoreThan1kChar(String titreInfo, String info) {
+    private boolean infoContainsMoreThan1kChar(String titreInfo, String info) throws IOException {
         if(info.length() > 1000){
             String contenus = "Une info de type " + titreInfo + " contient plus de 1000 caractères !";
             restClient.addNewMessage(new Message(contenus, "failure"));
+
+            /* rajout du commentaire dans le log */
+            Scribe.logRajout("Opération annulée : L'information contient plus de 1000 caractères\n" );
             return true;
         }
         return false;
@@ -201,9 +231,11 @@ public class FileChecker {
     
     /**
      * Check that the given date is valid (less than 3 month)
+     * 
      * @author Solofo R.
+     * @throws IOException
      */
-    public boolean isDateValid(String filename, String date) {
+    public boolean isDateValid(String filename, String date) throws IOException {
         // decode the date
         String dateArray[] = date.split("-");
         int year = Integer.parseInt(dateArray[0]);
@@ -217,6 +249,8 @@ public class FileChecker {
         if (ChronoUnit.MONTHS.between(currentTime, dateInfo) < -3) {
             String contenus = "la date de l'info dans le fichier " + filename + " est plus ancienne que 3 mois avant la date du jour !";
             restClient.addNewMessage(new Message(contenus, "failure"));
+            /* rajout du commentaire dans le log */
+            Scribe.logRajout("Opération annulée : la date de l'info dans le fichier est plus ancienne que 3 mois avant la date du jour !\n" );
             return false;
         }
         return true;
