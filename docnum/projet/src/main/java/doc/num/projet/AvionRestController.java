@@ -93,7 +93,7 @@ public class AvionRestController {
                 System.out.println(memoire);
                 System.out.println("fichier déjà utilisé");
 
-                Scribe.logRajout("AJOUT fichier anulé : L'avion " + memoire.getIdFic() + " est déjà présent dans la BDD\n" );
+                Scribe.logRajout("AJOUT fichier annulé : L'avion " + memoire.getIdFic() + " est déjà présent dans la BDD\n" );
 
                 return new ResponseEntity(HttpStatus.FOUND);
             }
@@ -118,7 +118,7 @@ public class AvionRestController {
             if (m.getIdFic().matches(idFic)) {
 
                 
-                Scribe.logRajout("AJOUT fichier anulé : L'avion " + idFic + " est déjà présent dans la BDD\n" );
+                Scribe.logRajout("AJOUT fichier annulé : Le fichier avec l'identifiant : " + idFic + " est déjà présent dans la BDD\n" );
 
                 return "false";
             }
@@ -162,16 +162,6 @@ public class AvionRestController {
     public ResponseEntity<String> updateAVion(@PathVariable("id") Long id, @RequestBody Avion avion)
             throws IOException {
         avionRep.findById(id);
-
-        int nbAvion = (int) avionRep.count();
-
-        /*
-        if ( avionRep.findById(id).get().getName().matches(avion.getName()) ) {
-            System.out.println(avion);
-            System.out.println("Avion déjà présent");
-            return new ResponseEntity(HttpStatus.OK);
-        }
-        */
 
         /* on vérifie que l'avion à modifier est bien présent dans  */
         if (avionRep.findById(id).get().getId()  != avion.getId()) {

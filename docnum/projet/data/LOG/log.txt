@@ -1,0 +1,73 @@
+Fichier de log du scrutateur crée le 2019-12-02 à 11:02:10
+
+Intitule de l'action          : add
+Identifiant unique du fichier : add_1
+Nom du vérificateur           : XSDValidator
+Checksum déclaré du fichier   : 5
+Date de l'action déclarée     : 2019-11-23T10:20:15
+
+AJOUT confirmé : L'avion AirbusA310 a été ajouté dans la BDD
+AJOUT confirmé : L'avion Soukhoi Su-27 a été ajouté dans la BDD
+AJOUT confirmé : L'avion Cenadair CL-415 a été ajouté dans la BDD
+AJOUT confirmé : L'avion Lockheed C-130 Hercules a été ajouté dans la BDD
+AJOUT confirmé : L'avion Lockheed SR-71 Blackbird a été ajouté dans la BDD
+
+
+--------------------------------
+
+Modification en date du 2019-12-02 à 11:02:41
+
+Intitule de l'action          : delete
+Identifiant unique du fichier : del_1
+Nom du vérificateur           : XSDValidator
+Checksum déclaré du fichier   : 3
+Date de l'action déclarée     : 2019-11-25T18:20:15
+
+SUPPRESSION confirmé : L'avion dont l'identifiant est 1 a bien été effacé
+SUPPRESSION confirmé : L'avion dont l'identifiant est 2 a bien été effacé
+SUPPRESSION confirmé : L'avion dont l'identifiant est 3 a bien été effacé
+
+
+--------------------------------
+
+Modification en date du 2019-12-02 à 11:02:49
+
+Intitule de l'action          : update
+Identifiant unique du fichier : update_1
+Nom du vérificateur           : XSDValidator
+Checksum déclaré du fichier   : 5
+Date de l'action déclarée     : 2019-11-24T05:23:15
+
+UPDATE confirmé : Les infos de l'avion Lockheed C-130 Hercules ont été mises à jour
+UPDATE confirmé : Les infos de l'avion Lockheed SR-71 Blackbird ont été mises à jour
+
+
+--------------------------------
+
+Modification en date du 2019-12-02 à 11:03:00
+
+Intitule de l'action          : add
+Identifiant unique du fichier : add_1
+Nom du vérificateur           : XSDValidator
+Checksum déclaré du fichier   : 5
+Date de l'action déclarée     : 2019-11-23T10:20:15
+
+AJOUT fichier annulé : Le fichier avec l'identifiant : add_1 est déjà présent dans la BDD
+AJOUT fichier annulé : Le fichier avec l'identifiant : add_1 est déjà présent dans la BDD
+
+
+--------------------------------
+
+Modification en date du 2019-12-02 à 11:03:09
+
+Intitule de l'action          : add
+Identifiant unique du fichier : add_2
+Nom du vérificateur           : XSDValidator
+Checksum déclaré du fichier   : 5
+Date de l'action déclarée     : 2019-11-23T10:20:15
+
+AJOUT confirmé : L'avion AirbusA310 a été ajouté dans la BDD
+AJOUT confirmé : L'avion Soukhoi Su-27 a été ajouté dans la BDD
+AJOUT confirmé : L'avion Cenadair CL-415 a été ajouté dans la BDD
+AJOUT annulé : L'avion Lockheed C-130 Hercules est déjà présent dans la BDD
+AJOUT annulé : L'avion Lockheed SR-71 Blackbird est déjà présent dans la BDD

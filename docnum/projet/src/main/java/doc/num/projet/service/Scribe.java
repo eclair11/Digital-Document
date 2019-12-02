@@ -15,13 +15,13 @@ public class Scribe {
     public static void logMemoire(String info) throws IOException{
 
         /* teste si le fichier existe */
-        File fichierLog = new File("data/XML/log.txt");
+        File fichierLog = new File("data/LOG/log.txt");
         boolean fichierLogPresent = fichierLog.exists();
 
         /* créer le fichier s'il n'existe pas
          * le récupère sinon
          * */
-        BufferedWriter writer = new BufferedWriter(new FileWriter("data/XML/log.txt", true));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("data/LOG/log.txt", true));
 
         /* récupération de la date */
         SimpleDateFormat dateFormattee = new SimpleDateFormat("yyyy-MM-dd à HH:mm:ss");
@@ -50,7 +50,7 @@ public class Scribe {
     /* simple ajout d'infos dans le log une fois qu'on s'est assurée de sa création */
     public static void logRajout(String info) throws IOException{
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter("data/XML/log.txt", true));
+        BufferedWriter writer = new BufferedWriter(new FileWriter("data/LOG/log.txt", true));
 
         /* on reprend l'écriture normale du fichier */
         writer.append(info);
