@@ -1,18 +1,19 @@
-# M1_DOC_NUM_2019
-Projet Document Numérique M1 - 2019
-Solofo, Elias, Ibrahima, Nicolas
+# XML Validator
 
+**Membres du groupes :**
+* Solofo
+* Elias
+* Ibrahima
+* Nicolas
 
-# lancement du projet
+**Lancement du projet :**
+* Cloner le projet
+* Ouvrir le projet sur un IDE (VSCode ou NetBeans)
+* Construire le projet
+* Lancer le projet
+* Aller sur [localhost:8080](http://localhost:8080/)
 
-- cloner le projet
-- ouvrir le projet docnum/projet/ avec un IDE (VScode ou Netbeans)
-- build le projet
-- lancer le projet
-- aller sur [localhost:8080](http://localhost:8080/)
-
-# Tester l'application
-
-- Ouvrir le répertoire docnum/projet/data/XML
-- deplacer les fichiers XML dans docnum/projet/testdata/ dans le répertoire docnum/projet/data/XML
-- Voir les changements affecté dans la DB via l'UI sur [localhost:8080](http://localhost:8080/)
+**Tester l'application :**
+* Ouvrir le répertoire data/XML
+* Déplacer les fichiers XML du répertoire testdata vers le répertoire data/XML
+* Voir les changements sur la BDD via l'interface utilisateur sur [localhost:8080](http://localhost:8080/)
